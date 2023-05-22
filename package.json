@@ -1,10 +1,10 @@
 {
-  "name": "web-vue",
+  "name": "web-echarts",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "author": "zhoubichaun@icloud.com",
-  "hommepage": "https://github.com/zhoubichuan/web-vue/",
+  "hommepage": "https://github.com/zhoubichuan/web-echarts/",
   "private": true,
   "license": "MIT",
   "scripts": {

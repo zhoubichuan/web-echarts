@@ -2,19 +2,19 @@ const nav = [{
     text: '基础知识',
     items: [
         {
-            text: '一.Vue 的工程化',
+            text: '一.折线图',
             link: '/base/engine/1.index'
         },
         {
-            text: '二.Vue 功能模块',
+            text: '二.柱状图',
             link: '/base/project/1.index',
         },
         {
-            text: '三.Vue 2.x全家桶',
+            text: '三.饼图',
             link: '/base/vue2.x/1.index'
         },
         {
-            text: '四.Vue 3.x全家桶',
+            text: '四.散点图',
             link: '/base/vue3.x/1.index'
         }
     ]
@@ -23,12 +23,12 @@ const nav = [{
     text: '高级知识',
     items: [
         {
-            text: '一.微前端',
+            text: '一.地理坐标/地图',
             link: '/senior/1.micro/1.index'
         },
 
         {
-            text: '二.TypeScript',
+            text: '二.漏斗',
             link: '/senior/2.typescript/1.index'
         },
         {
