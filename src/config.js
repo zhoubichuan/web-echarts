@@ -2,9 +2,9 @@ import * as api from '@/api/index.js'
 import * as _ from 'lodash'
 import axios from 'axios'
 import service from '@/util/request.js'
-import echarts from 'echarts'
-import * as china from 'echarts/map/json/china.json'
-import * as world from 'echarts/map/json/world.json'
+import * as echarts from 'echarts'
+import * as china from './static/json/china.json'
+import * as world from './static/json/world.json'
 
 export default {
   install (Vue) {
