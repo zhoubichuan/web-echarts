@@ -1,5 +1,5 @@
 <template>
-  <div ref="bar" style="styles"></div>
+  <div ref="bar" style="height: 400px"></div>
 </template>
   
   <script>
