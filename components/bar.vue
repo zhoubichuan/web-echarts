@@ -37,7 +37,7 @@ export default {
       type: [Array, Object],
       default: () => [
         {
-          top: 80,
+          top: "250",
           bottom: 30,
         },
       ],
@@ -108,9 +108,26 @@ export default {
     },
   },
   data() {
+    let title = {
+      text: '{style1|}{style2|}'+this.title.text,
+      textStyle: {
+        rich: {
+          style1: {
+            height: 20,
+            width: 4,
+            color: "#eee",
+          },
+          style2: {
+            height: 20,
+            width: 4,
+            color: "#333",
+          },
+        },
+      },
+    };
     return {
       option: {
-        title: this.title,
+        title:this.title,
         tooltip: this.tooltip,
         grid: this.grid,
         xAxis: this.xAxis,
