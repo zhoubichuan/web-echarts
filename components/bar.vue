@@ -11,7 +11,7 @@ export default {
   props: {
     styles: {
       type: String,
-      default: "height: 400px",
+      default: "height: 400px;width:800px;",
     },
     title: {
       type: [Array, Object],
@@ -108,26 +108,47 @@ export default {
     },
   },
   data() {
-    let title = {
-      text: '{style1|}{style2|}'+this.title.text,
-      textStyle: {
-        rich: {
-          style1: {
-            height: 20,
-            width: 4,
-            color: "#eee",
-          },
-          style2: {
-            height: 20,
-            width: 4,
+    let title = ({ text, ...others }) => {
+      let target = {};
+      if (text) {
+        target = {
+          text: "{style1|}{style2|}{style3|}" + text,
+          textStyle: {
+            fontWeight: "800",
             color: "#333",
+            fontSize: 18,
+            left: 0,
+            right: 0,
+            rich: {
+              style1: {
+                height: 20,
+                width: 4,
+                backgroundColor: "#2d65f2",
+              },
+              style2: {
+                height: 20,
+                width: 4,
+                backgroundColor: "#b2c2ff",
+              },
+              style3: {
+                width: 10,
+              },
+            },
           },
-        },
-      },
+          subtextStyle: {
+            right: 0,
+            top: -8,
+            color: "#666",
+            fontSize: "18",
+          },
+          ...others,
+        };
+      }
+      return target;
     };
     return {
       option: {
-        title:this.title,
+        title: title(this.title),
         tooltip: this.tooltip,
         grid: this.grid,
         xAxis: this.xAxis,
