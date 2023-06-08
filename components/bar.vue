@@ -108,7 +108,8 @@ export default {
     },
   },
   data() {
-    let title = ({ text, ...others }) => {
+    let title = ({ text, subtext, ...others }) => {
+      let arr = []
       let target = {};
       if (text) {
         target = {
@@ -135,16 +136,29 @@ export default {
               },
             },
           },
+          ...others,
+        };
+        arr.push(target)
+      }
+      if (subtext) {
+        target = {
+          subtext: "{style1|}" + subtext,
           subtextStyle: {
-            right: 0,
-            top: -8,
+            align: 'right',
+            verticalAlign: 'top',
             color: "#666",
             fontSize: "18",
+            rich: {
+              style1: {
+                padding:[-80,0,0,0]
+              },
+            },
           },
           ...others,
         };
       }
-      return target;
+      arr.push(target)
+      return arr;
     };
     return {
       option: {
