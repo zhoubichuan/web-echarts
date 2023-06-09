@@ -1,8 +1,10 @@
 import bar from "./bar";
+import pie from "./pie";
 import polar from './polar'
 
 let components = {
   bar,
+  pie,
   polar
 };
 export default {

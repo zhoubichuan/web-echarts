@@ -7,7 +7,7 @@ const labelRight = {
   position: "right",
 };
 export default {
-  name: "WebBar",
+  name: "WebPie",
   props: {
     styles: {
       type: String,
