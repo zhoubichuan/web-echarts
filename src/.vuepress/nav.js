@@ -1,13 +1,13 @@
 const nav = [
   {
-    text: "基础知识",
+    text: "echarts实例",
     items: [
       {
-        text: "一.常见部分",
+        text: "一.配置部分",
         link: "/base/engine/1.index",
       },
       {
-        text: "二.少见部分",
+        text: "二.函数部分",
         link: "/base/project/1.index",
       },
       {
