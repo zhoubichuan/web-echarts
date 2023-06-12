@@ -1,19 +1,19 @@
 const sidebar = {
     '/base/engine/': [
         '1.index',
-        '1.utils',
-        '2.project',
-        '3.vuecli',
-        '4.env',
-        '5.ui',
-        '6.layout',
-        '7.single',
-        '8.page',
-        '9.module',
-        '10.skill',
-        '11.mock',
-        '12.optimization',
-        '13.deploy'
+        '1.line',
+        '2.bar',
+        '3.pie',
+        '4.scatter',
+        '5.effectScatter',
+        '6.radar',
+        '7.tree',
+        '8.treemap',
+        '9.sunburst',
+        '10.boxplot',
+        '11.candlestick',
+        '12.heatmap',
+        '13.map'
     ],
     '/base/project/': [
         '1.index',
