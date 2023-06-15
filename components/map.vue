@@ -1,5 +1,5 @@
 <template>
-  <div ref="bar" style="height: 400px"></div>
+  <div ref="map" style="height: 400px"></div>
 </template>
   
   <script>
@@ -7,8 +7,15 @@ const labelRight = {
   position: "right",
 };
 export default {
-  name: "WebLine",
+  name: "WebMap",
   props: {
+    config: {
+      type: Function,
+    },
+    data: {
+      type: [Array, Object],
+      default: () => [],
+    },
     styles: {
       type: String,
       default: "height: 400px;width:800px;",
@@ -42,17 +49,23 @@ export default {
         },
       ],
     },
+    legend: {
+      type: [Array, Object],
+      default: () => [
+        {
+          orient: "vertical",
+          left: "0%",
+          top: "0%",
+          bottom: "center",
+          data: ["<10w", "10w-50w", "50w-100w", "100w-500w", ">500w"],
+        },
+      ],
+    },
     xAxis: {
       type: [Array, Object],
       default: () => [
         {
-          type: "value",
-          position: "top",
-          splitLine: {
-            lineStyle: {
-              type: "dashed",
-            },
-          },
+          show: false,
         },
       ],
     },
@@ -60,23 +73,7 @@ export default {
       type: [Array, Object],
       default: () => [
         {
-          type: "category",
-          axisLine: { show: false },
-          axisLabel: { show: false },
-          axisTick: { show: false },
-          splitLine: { show: false },
-          data: [
-            "ten",
-            "nine",
-            "eight",
-            "seven",
-            "six",
-            "five",
-            "four",
-            "three",
-            "two",
-            "one",
-          ],
+          show: false,
         },
       ],
     },
@@ -84,25 +81,8 @@ export default {
       type: [Array, Object],
       default: () => [
         {
-          name: "Cost",
-          type: "bar",
-          stack: "Total",
-          label: {
-            show: true,
-            formatter: "{b}",
-          },
-          data: [
-            { value: -0.07, label: labelRight },
-            { value: -0.09, label: labelRight },
-            0.2,
-            0.44,
-            { value: -0.23, label: labelRight },
-            0.08,
-            { value: -0.17, label: labelRight },
-            0.47,
-            { value: -0.36, label: labelRight },
-            0.18,
-          ],
+          type: "pie",
+          radius: ["58%", "68%"],
         },
       ],
     },
@@ -165,15 +145,29 @@ export default {
         title: title(this.title),
         tooltip: this.tooltip,
         grid: this.grid,
+        legend: this.legend,
         xAxis: this.xAxis,
         yAxis: this.yAxis,
         series: this.series,
       },
+      charts:null
     };
   },
   mounted() {
-    let charts = this.$echarts.init(this.$refs.bar);
-    charts.setOption(this.option);
+    this.$echarts.registerMap("word", this.$world);
+    this.$echarts.registerMap("china", this.$china);
+    this.charts = this.$echarts.init(this.$refs.map);
+    if(!this.config){
+      this.charts.setOption(this.option);
+    }
   },
+  watch:{
+    data:{
+      handler(val){
+        this.charts.setOption(this.config(val));
+      },
+      deep:true,
+    }
+  }
 };
 </script>

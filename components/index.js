@@ -2,12 +2,13 @@ import bar from "./bar";
 import line from "./line";
 import pie from "./pie";
 import polar from './polar'
-
+import map from './map'
 let components = {
   bar,
   line,
   pie,
-  polar
+  polar,
+  map
 };
 export default {
   install(Vue) {
