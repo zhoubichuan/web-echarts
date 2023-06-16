@@ -1,5 +1,5 @@
 <template>
-  <div ref="bar" style="height: 400px"></div>
+  <div ref="pie" style="height: 400px"></div>
 </template>
   
   <script>
@@ -88,7 +88,19 @@ export default {
     },
   },
   data() {
-    let title = ({ text, subtext, ...others }) => {
+    return {
+      option: {
+        title: this.title(this.title),
+        tooltip: this.tooltip,
+        grid: this.grid,
+        legend: this.legend,
+        series: this.series,
+      },
+      charts: null,
+    };
+  },
+  methods: {
+    title({ text, subtext, ...others }) {
       let arr = [];
       let target = {};
       if (text) {
@@ -139,33 +151,25 @@ export default {
       }
       arr.push(target);
       return arr;
-    };
-    return {
-      option: {
-        title: title(this.title),
-        tooltip: this.tooltip,
-        grid: this.grid,
-        legend: this.legend,
-        xAxis: this.xAxis,
-        yAxis: this.yAxis,
-        series: this.series,
-      },
-      charts:null
-    };
+    },
   },
   mounted() {
-    this.charts = this.$echarts.init(this.$refs.bar);
-    if(!this.config){
+    this.charts = this.$echarts.init(this.$refs.pie);
+    if (!this.config) {
       this.charts.setOption(this.option);
     }
   },
-  watch:{
-    data:{
-      handler(val){
-        this.charts.setOption(this.config(val));
+  watch: {
+    data: {
+      handler(val) {
+        let { title, ...option } = this.config(val);
+        this.charts.setOption({
+          title: title ? this.title(title) : [],
+          ...option,
+        });
       },
-      deep:true
-    }
-  }
+      deep: true,
+    },
+  },
 };
 </script>
