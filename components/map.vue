@@ -146,8 +146,6 @@ export default {
         tooltip: this.tooltip,
         grid: this.grid,
         legend: this.legend,
-        xAxis: this.xAxis,
-        yAxis: this.yAxis,
         series: this.series,
       },
       charts:null
