@@ -9,18 +9,23 @@ const labelRight = {
 export default {
   name: "WebBar",
   props: {
+    config: {
+      type: Function,
+    },
+    data: {
+      type: [Array, Object],
+      default: () => [],
+    },
     styles: {
       type: String,
       default: "height: 400px;width:800px;",
     },
     title: {
       type: [Array, Object],
-      default: () => [
-        {
-          text: "统计数据",
-          subtext: "单位：个",
-        },
-      ],
+      default: () => ({
+        text: "统计数据",
+        subtext: "单位：个",
+      }),
     },
     tooltip: {
       type: [Array, Object],
@@ -39,6 +44,18 @@ export default {
         {
           top: "250",
           bottom: 30,
+        },
+      ],
+    },
+    legend: {
+      type: [Array, Object],
+      default: () => [
+        {
+          orient: "vertical",
+          left: "0%",
+          top: "0%",
+          bottom: "center",
+          data: ["<10w", "10w-50w", "50w-100w", "100w-500w", ">500w"],
         },
       ],
     },
@@ -108,8 +125,22 @@ export default {
     },
   },
   data() {
-    let title = ({ text, subtext, ...others }) => {
-      let arr = []
+    return {
+      option: {
+        title: this.title ? this.getTitle(this.title) : [],
+        tooltip: this.tooltip,
+        grid: this.grid,
+        legend: this.legend,
+        xAxis: this.xAxis,
+        yAxis: this.yAxis,
+        series: this.series,
+      },
+      charts: null,
+    };
+  },
+  methods: {
+    getTitle({ text, subtext, ...others }) {
+      let arr = [];
       let target = {};
       if (text) {
         target = {
@@ -138,19 +169,18 @@ export default {
           top: 0,
           ...others,
         };
-        arr.push(target)
+        arr.push(target);
       }
       if (subtext) {
         target = {
           subtext: "{style1|}" + subtext,
           subtextStyle: {
-            align: 'right',
-            verticalAlign: 'top',
+            align: "right",
+            verticalAlign: "top",
             color: "#666",
             fontSize: "18",
             rich: {
-              style1: {
-              },
+              style1: {},
             },
           },
           right: 0,
@@ -158,23 +188,27 @@ export default {
           ...others,
         };
       }
-      arr.push(target)
+      arr.push(target);
       return arr;
-    };
-    return {
-      option: {
-        title: title(this.title),
-        tooltip: this.tooltip,
-        grid: this.grid,
-        xAxis: this.xAxis,
-        yAxis: this.yAxis,
-        series: this.series,
-      },
-    };
+    },
   },
   mounted() {
-    let charts = this.$echarts.init(this.$refs.bar);
-    charts.setOption(this.option);
+    this.charts = this.$echarts.init(this.$refs.bar);
+    if (!this.config) {
+      this.charts.setOption(this.option);
+    }
+  },
+  watch: {
+    data: {
+      handler(val) {
+        let { title, ...option } = this.config(val);
+        this.charts.setOption({
+          title: title ? this.getTitle(title) : [],
+          ...option,
+        });
+      },
+      deep: true,
+    },
   },
 };
 </script>

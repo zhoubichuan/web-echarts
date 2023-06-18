@@ -1,6 +1,6 @@
 export * from './getJsonData'
 export * from './login'
-export * from './relationEntity'
+export * from './bar'
 export * from './pie'
 export * from './dtaInstance'
 export * from './systemTag'
