@@ -1,21 +1,61 @@
 const path = require("path");
-const webpack = require('webpack')
+const httpRequest = require("./public/mock/http.js");
+const Webpack = require("webpack");
+const bodyParser = require('body-parser')
+
 module.exports = {
   title: "Echarts学习笔记",
   description: "风浪没平息 我宣告奔跑的意义",
   base: "/web-echarts/", // 部署站点的基础路径
   port: 3009,
-  configureWebpack: () => {
-    let target = {
-      resolve: {
-        alias: {
-          "@": path.resolve(__dirname, "../../src"),
-          vue$: "vue/dist/vue.esm.js",
-        },
-      },
-    };
-    return target;
+  head: [["script", { src: "/dll/vendor.dll.js" }]],
+  define: {
+    env: {
+      NODE_ENV: process.env.NODE_ENV,
+    },
   },
+  beforeDevServer(app, server, compiler) {
+    app.use(bodyParser.json())
+    app.use(bodyParser.urlencoded({ extended: false }))
+  
+    httpRequest(app);
+  },
+  alias: {
+    "mock": path.resolve(__dirname, "../../mock/"),
+    "@": path.resolve(__dirname, "../../src/"),
+    vue$: "vue/dist/vue.esm.js",
+  },
+  postcss:{
+    plugins: [require('autoprefixer')]
+  },
+  stylus:{ preferPathResolver: 'webpack' },
+  scss: {
+    data: `
+    @import "~@/assets/style/var.scss";
+    @import "~@/assets/style/variables.scss";
+    @import "~@/assets/style/reset.scss";
+    @import "~@/assets/style/mixins.scss";
+    `,
+  },
+  sass:{ indentedSyntax: true },
+  less:{},
+  plugins: [
+    // 设置环境变量
+    new Webpack.DefinePlugin({
+      "process.env": {
+        NODE_ENV: "production",
+        BASE_API: "/",
+      },
+    }),
+    new Webpack.DllReferencePlugin({
+      manifest: require(path.resolve(
+        __dirname,
+        "public/dll/vendor-manifest.json"
+      )),
+      name: "[name]_[hash]",
+      context: process.cwd(),
+    }),
+  ],
   dest: "web-echarts", // 指定 vuepress 的输出目录
   markdown: {
     toc: { includeLevel: [2, 3] },

@@ -1,5 +1,5 @@
 <template>
-  <div ref="bar" style="height: 400px"></div>
+  <div ref="line" style="height: 400px"></div>
 </template>
   
   <script>
@@ -9,6 +9,13 @@ const labelRight = {
 export default {
   name: "WebLine",
   props: {
+    config: {
+      type: Function,
+    },
+    data: {
+      type: [Array, Object],
+      default: () => [],
+    },
     styles: {
       type: String,
       default: "height: 400px;width:800px;",
@@ -39,6 +46,18 @@ export default {
         {
           top: "250",
           bottom: 30,
+        },
+      ],
+    },
+    legend: {
+      type: [Array, Object],
+      default: () => [
+        {
+          orient: "vertical",
+          left: "0%",
+          top: "0%",
+          bottom: "center",
+          data: ["<10w", "10w-50w", "50w-100w", "100w-500w", ">500w"],
         },
       ],
     },
@@ -85,7 +104,7 @@ export default {
       default: () => [
         {
           name: "Cost",
-          type: "bar",
+          type: "line",
           stack: "Total",
           label: {
             show: true,
@@ -108,7 +127,21 @@ export default {
     },
   },
   data() {
-    let title = ({ text, subtext, ...others }) => {
+    return {
+      option: {
+        title: this.title ? this.getTitle(this.title) : [],
+        tooltip: this.tooltip,
+        grid: this.grid,
+        legend: this.legend,
+        xAxis: this.xAxis,
+        yAxis: this.yAxis,
+        series: this.series,
+      },
+      charts: null,
+    };
+  },
+  methods: {
+    getTitle({ text, subtext, ...others }) {
       let arr = [];
       let target = {};
       if (text) {
@@ -159,21 +192,25 @@ export default {
       }
       arr.push(target);
       return arr;
-    };
-    return {
-      option: {
-        title: title(this.title),
-        tooltip: this.tooltip,
-        grid: this.grid,
-        xAxis: this.xAxis,
-        yAxis: this.yAxis,
-        series: this.series,
-      },
-    };
+    },
   },
   mounted() {
-    let charts = this.$echarts.init(this.$refs.bar);
-    charts.setOption(this.option);
+    this.charts = this.$echarts.init(this.$refs.line);
+    if (!this.config) {
+      this.charts.setOption(this.option);
+    }
+  },
+  watch: {
+    data: {
+      handler(val) {
+        let { title, ...option } = this.config(val);
+        this.charts.setOption({
+          title: title ? this.getTitle(title) : [],
+          ...option,
+        });
+      },
+      deep: true,
+    },
   },
 };
 </script>

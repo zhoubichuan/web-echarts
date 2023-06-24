@@ -1,15 +1,15 @@
 import request from '@/util/request'
 // 获取中国地图数据
-export function getBar1 () {
+export function getLine1 () {
   return request({
-    url: 'mock/bar1.json',
+    url: 'mock/line1.json',
     method: 'get',
   })
 }
 // 获取中国地图数据
-export function getBar2 () {
+export function getLine2 () {
     return request({
-      url: 'mock/bar2.json',
+      url: 'mock/line2.json',
       method: 'get',
     })
   }
