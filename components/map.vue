@@ -158,6 +158,7 @@ export default {
     if(!this.config){
       this.charts.setOption(this.option);
     }
+    this.$emit('echarts',this.charts)
   },
   watch:{
     data:{
