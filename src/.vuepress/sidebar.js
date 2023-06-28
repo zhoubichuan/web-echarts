@@ -1,5 +1,5 @@
 const sidebar = {
-    '/base/engine/': [
+    '/base/config/': [
         '1.index',
         '1.line',
         '2.bar',
@@ -24,14 +24,13 @@ const sidebar = {
         '21.themeRiver',
         '22.custom',
     ],
-    '/base/project/': [
+    '/base/api/': [
         '1.index',
         '10.server',
         '11.pwa',
         '12.upload',
-        // '13.video'
     ],
-    '/base/vue2.x/': [
+    '/base/3d/': [
         '1.index',
         '1.vue-cli',
         '2.vue',
@@ -46,7 +45,7 @@ const sidebar = {
         '7.style',
         '8.eslint',
     ],
-    '/base/vue3.x/': [
+    '/base/gl/': [
         '1.index',
         '1.vue-cli3',
         '2.vue',

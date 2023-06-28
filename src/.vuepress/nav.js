@@ -4,19 +4,19 @@ const nav = [
     items: [
       {
         text: "一.配置部分",
-        link: "/base/engine/1.index",
+        link: "/base/config/1.index",
       },
       {
         text: "二.函数部分",
-        link: "/base/project/1.index",
+        link: "/base/api/1.index",
       },
       {
         text: "三.3D部分",
-        link: "/base/vue2.x/1.index",
+        link: "/base/3d/1.index",
       },
       {
         text: "四.GL部分",
-        link: "/base/vue3.x/1.index",
+        link: "/base/gl/1.index",
       },
     ],
   },
