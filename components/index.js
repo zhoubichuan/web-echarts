@@ -5,6 +5,7 @@ import scatter from "./scatter";
 import tree from "./tree";
 import polar from './polar'
 import map from './map'
+import candlestick from './candlestick'
 let components = {
   bar,
   line,
@@ -12,7 +13,8 @@ let components = {
   scatter,
   tree,
   polar,
-  map
+  map,
+  candlestick
 };
 export default {
   install(Vue) {
