@@ -1,8 +1,7 @@
 import request from "@/util/request";
-// 获取中国地图数据
-export function getMap1() {
+export function getMap(index = 1) {
   return request({
-    url: "mock/map1.json",
+    url: "mock/map" + index + ".json",
     method: "get",
   });
 }
