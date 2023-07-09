@@ -11,7 +11,7 @@ export default {
   props: {
     styles: {
       type: String,
-      default: "height: 400px",
+      default: "height: 100%",
     },
     title: {
       type: [Array, Object],

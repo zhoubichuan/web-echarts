@@ -1,5 +1,5 @@
 <template>
-  <div ref="scatter" style="height: 400px"></div>
+  <div ref="scatter" style="height: 100%"></div>
 </template>
   
 <script>
@@ -15,7 +15,7 @@ export default {
     },
     styles: {
       type: String,
-      default: "height: 400px;width:800px;",
+      default: "height: 100%;width:800px;",
     },
     title: {
       type: [Array, Object],
