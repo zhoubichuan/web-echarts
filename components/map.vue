@@ -88,7 +88,19 @@ export default {
     },
   },
   data() {
-    let title = ({ text, subtext, ...others }) => {
+    return {
+      option: {
+        title: titleTransform(this.title),
+        tooltip: this.tooltip,
+        grid: this.grid,
+        legend: this.legend,
+        series: this.series,
+      },
+      charts: null,
+    };
+  },
+  methods: {
+    titleTransform({ text, subtext, ...others }) {
       let arr = [];
       let target = {};
       if (text) {
@@ -139,34 +151,28 @@ export default {
       }
       arr.push(target);
       return arr;
-    };
-    return {
-      option: {
-        title: titleTransform(this.title),
-        tooltip: this.tooltip,
-        grid: this.grid,
-        legend: this.legend,
-        series: this.series,
-      },
-      charts:null
-    };
+    },
   },
   mounted() {
     this.$echarts.registerMap("word", this.$world);
     this.$echarts.registerMap("china", this.$china);
     this.charts = this.$echarts.init(this.$refs.map);
-    if(!this.config){
+    if (!this.config) {
       this.charts.setOption(this.option);
     }
-    this.$emit('echarts',this.charts)
+    this.$emit("echarts", this.charts);
   },
-  watch:{
-    data:{
-      handler(val){
-        this.charts.setOption(this.config(val));
+  watch: {
+    data: {
+      handler(val) {
+        let { title, ...option } = this.config(val);
+        this.charts.setOption({
+          title: title ? this.titleTransform(title) : [],
+          ...option,
+        });
       },
-      deep:true,
-    }
-  }
+      deep: true,
+    },
+  },
 };
 </script>

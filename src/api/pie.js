@@ -1,8 +1,8 @@
 import request from '@/util/request'
-// 获取中国地图数据
-export function getPie1 () {
+
+export function getPie(index = 1) {
   return request({
-    url: 'mock/pie1.json',
-    method: 'get',
-  })
+    url: "mock/pie" + index + ".json",
+    method: "get",
+  });
 }
