@@ -127,7 +127,7 @@ export default {
   data() {
     return {
       option: {
-        title: this.title ? this.getTitle(this.title) : [],
+        title: this.title ? this.titleTransform(this.title) : [],
         tooltip: this.tooltip,
         grid: this.grid,
         legend: this.legend,
@@ -139,7 +139,7 @@ export default {
     };
   },
   methods: {
-    getTitle({ text, subtext, ...others }) {
+    titleTransform({ text, subtext, ...others }) {
       let arr = [];
       let target = {};
       if (text) {
@@ -203,7 +203,7 @@ export default {
       handler(val) {
         let { title, ...option } = this.config(val);
         this.charts.setOption({
-          title: title ? this.getTitle(title) : [],
+          title: title ? this.titleTransform(title) : [],
           ...option,
         });
       },

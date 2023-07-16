@@ -142,7 +142,7 @@ export default {
     };
     return {
       option: {
-        title: title(this.title),
+        title: titleTransform(this.title),
         tooltip: this.tooltip,
         grid: this.grid,
         legend: this.legend,

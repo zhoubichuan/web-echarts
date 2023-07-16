@@ -5,7 +5,7 @@ import { getToken } from "@/util/auth";
 // 创建axios实例
 let baseURL = "/web-echarts/";
 try {
-  baseURL = process ? process.env?.BASE_API : "/";
+  baseURL = process ? process.env?.BASE_API : "/web-echarts/";
 } catch (e) {}
 const service = axios.create({
   baseURL,

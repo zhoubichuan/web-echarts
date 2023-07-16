@@ -111,16 +111,6 @@ module.exports = {
       },
     ],
     [
-      "dynamic-title",
-      {
-        // showIcon: 'https://www.typescriptlang.org/favicon-32x32.png?v=8944a05a8b601855de116c8a56d3b3ae',
-        showText: "(/≧▽≦/)欢迎回来~",
-        // hideIcon: 'https://www.typescriptlang.org/favicon-32x32.png?v=8944a05a8b601855de116c8a56d3b3ae',
-        hideText: "(●—●)bye bye~",
-        recoverTime: 1000,
-      },
-    ],
-    [
       "copyright",
       {
         authorName: "zhoubichuan@icloud.com", // 选中的文字将无法被复制
