@@ -1,13 +1,13 @@
 const nav = [
   {
-    text: "echarts实例",
+    text: "Echarts基础",
     items: [
       {
-        text: "一.配置部分",
+        text: "一.series部分",
         link: "/base/config/1.index",
       },
       {
-        text: "二.函数部分",
+        text: "二.api部分",
         link: "/base/api/1.index",
       },
       {

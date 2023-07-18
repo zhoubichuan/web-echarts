@@ -3,11 +3,11 @@
 ![Echarts](./src/.vuepress/public/home.png)
 
 - 基础知识
-  - [一.Echarts基础](./base/engine/1.index.html)
-  - [二.Vue 功能模块](./base/project/1.index.html)
-  - [三.Vue 2.x 基础](./base/vue2.x/1.index.html)
-  - [四.Vue 3.x 基础](./base/vue3.x/1.index.html)
+  - [一.series 部分](./base/config/1.index.html)
+  - [二.api 部分](./base/project/1.index.html)
+  - [三.3d 部分](./base/vue2.x/1.index.html)
+  - [四.gl 部分](./base/vue3.x/1.index.html)
 - 高级知识
-  - [一.Vue 组件开发](./senior/component/1.index.html)
-  - [二.TypeScript](./senior/typescript/1.index.html)
-  - [三.构建部署](./senior/deploy/1.index.html)
+  - [一.canvas 折线图开发](./senior/component/1.index.html)
+  - [二.canvas 柱状图开发](./senior/typescript/1.index.html)
+  - [三.canvas 饼图图开发](./senior/deploy/1.index.html)

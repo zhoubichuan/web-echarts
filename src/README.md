@@ -16,8 +16,8 @@ meta:
     <div id="large-header" class="large-header"></div>
     <div class="features">
       <div class="feature">
-        <h2><a href="/web-echarts/base/config/1.index.html">Echarts基础案例</a></h2> 
-        <p>提供一些基础案例，供平时开发参考</p>
+        <h2><a href="/web-echarts/base/config/1.index.html">Echarts基础</a></h2> 
+        <p>提供一些基础案例，包括series配置部分、api函数使用、3d相关、gl相关案例</p>
       </div>
       <div class="feature">
         <h2><a href="/web-echarts/base/project/1.index.html">Canvas实现</a></h2> 
