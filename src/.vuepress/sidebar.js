@@ -1,5 +1,20 @@
 const sidebar = {
-    '/base/config/': [
+    '/base/components/': [
+        '1.index',
+        '1.vue-cli',
+        '2.vue',
+        '2.message',
+        '2.directive',
+        '2.vue3',
+        '2.vue4',
+        '3.vue-router',
+        '4.vuex',
+        '5.ui',
+        '6.utils',
+        '7.style',
+        '8.eslint',
+    ],
+    '/base/series/': [
         '1.index',
         '1.line',
         '2.bar',
@@ -26,24 +41,10 @@ const sidebar = {
     ],
     '/base/api/': [
         '1.index',
-        '10.server',
-        '11.pwa',
-        '12.upload',
-    ],
-    '/base/3d/': [
-        '1.index',
-        '1.vue-cli',
-        '2.vue',
-        '2.message',
-        '2.directive',
-        '2.vue3',
-        '2.vue4',
-        '3.vue-router',
-        '4.vuex',
-        '5.ui',
-        '6.utils',
-        '7.style',
-        '8.eslint',
+        '1.echarts',
+        '2.echartsInstance',
+        '3.action',
+        '4.events'
     ],
     '/base/gl/': [
         '1.index',
