@@ -5,6 +5,7 @@ import service from '@/util/request.js'
 import * as echarts from 'echarts'
 import * as china from './static/json/china.json'
 import * as world from './static/json/world.json'
+import "echarts-gl";
 
 export default {
   install (Vue) {

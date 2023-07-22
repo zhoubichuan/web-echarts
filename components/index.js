@@ -1,6 +1,7 @@
 import bar from "./bar";
 import line from "./line";
 import pie from "./pie";
+import pie3d from "./pie3d";
 import scatter from "./scatter";
 import tree from "./tree";
 import polar from './polar'
@@ -10,6 +11,7 @@ let components = {
   bar,
   line,
   pie,
+  pie3d,
   scatter,
   tree,
   polar,
