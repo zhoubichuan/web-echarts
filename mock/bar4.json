@@ -1,0 +1,8 @@
+{
+  "statusCode": 200,
+  "success": true,
+  "result": {
+    "status": 200,
+    "data": [[300, 450, 770, 203, 255, 188, 156]]
+  }
+}

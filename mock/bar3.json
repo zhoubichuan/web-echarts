@@ -1,0 +1,10 @@
+{
+  "statusCode": 200,
+  "success": true,
+  "result": {
+    "status": 200,
+    "data": [
+      [40, 56, 23, 15, 15]
+    ]
+  }
+}
