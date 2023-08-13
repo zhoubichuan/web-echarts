@@ -1,4 +1,5 @@
 import bar from "./bar";
+import graph from "./graph";
 import line from "./line";
 import pie from "./pie";
 import pie3d from "./pie3d";
@@ -9,6 +10,7 @@ import map from './map'
 import candlestick from './candlestick'
 let components = {
   bar,
+  graph,
   line,
   pie,
   pie3d,

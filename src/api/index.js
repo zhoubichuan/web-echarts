@@ -1,5 +1,6 @@
 export * from './map'
 export * from './bar'
+export * from './graph'
 export * from './pie'
 export * from './candlestick'
 export * from './tree'
