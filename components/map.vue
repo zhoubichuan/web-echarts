@@ -153,6 +153,9 @@ export default {
       return arr;
     },
   },
+  beforeMount(){
+    this.$emit('mapBeforeMount',this.$echarts)
+  },
   mounted() {
     this.$echarts.registerMap("word", this.$world);
     this.$echarts.registerMap("china", this.$china);
