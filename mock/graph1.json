@@ -1,0 +1,69 @@
+{
+  "statusCode": 200,
+  "success": true,
+  "result": {
+    "status": 200,
+    "data": [
+      {
+        "name": "唐僧",
+        "x": 300,
+        "y": 300,
+        "link": [
+          {
+            "source": "唐僧",
+            "target": "孙悟空"
+          },
+          {
+            "source": "唐僧",
+            "target": "猪八戒"
+          },
+          {
+            "source": "唐僧",
+            "target": "沙和尚"
+          }
+        ]
+      },
+      {
+        "name": "孙悟空",
+        "x": 800,
+        "y": 300,
+        "link": [
+          {
+            "source": "孙悟空",
+            "target": "唐僧",
+            "label": {
+              "show": true
+            },
+            "lineStyle": {
+              "curveness": 0.2
+            }
+          },
+          {
+            "source": "孙悟空",
+            "target": "猪八戒",
+            "label": {
+              "show": true
+            },
+            "lineStyle": {
+              "curveness": 0.2
+            }
+          },
+          {
+            "source": "孙悟空",
+            "target": "沙和尚"
+          }
+        ]
+      },
+      {
+        "name": "猪八戒",
+        "x": 550,
+        "y": 100
+      },
+      {
+        "name": "沙和尚",
+        "x": 550,
+        "y": 500
+      }
+    ]
+  }
+}
