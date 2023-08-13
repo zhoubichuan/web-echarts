@@ -90,7 +90,7 @@ export default {
   data() {
     return {
       option: {
-        title: titleTransform(this.title),
+        title: this.titleTransform(this.title),
         tooltip: this.tooltip,
         grid: this.grid,
         legend: this.legend,
@@ -153,8 +153,8 @@ export default {
       return arr;
     },
   },
-  beforeMount(){
-    this.$emit('mapBeforeMount',this.$echarts)
+  beforeMount() {
+    this.$emit("mapBeforeMount", this.$echarts);
   },
   mounted() {
     this.$echarts.registerMap("word", this.$world);
@@ -168,7 +168,7 @@ export default {
   watch: {
     data: {
       handler(val) {
-        let { title, ...option } = this.config(val);
+        let { title, ...option } = this.config(val, this.charts);
         this.charts.setOption({
           title: title ? this.titleTransform(title) : [],
           ...option,

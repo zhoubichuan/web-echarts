@@ -5,6 +5,10 @@ import service from '@/util/request.js'
 import * as echarts from 'echarts'
 import * as china from './static/json/china.json'
 import * as world from './static/json/world.json'
+import beijingsvg from './static/beijingsvg'
+import beijingsvg2 from './static/beijingsvg2'
+import zhongguosvg from './static/zhongguosvg'
+import zhongguosvg2 from './static/zhongguosvg2'
 import "echarts-gl";
 
 export default {
@@ -12,6 +16,10 @@ export default {
     Vue.prototype.$echarts = echarts
     Vue.prototype.$china = china.default
     Vue.prototype.$world = world.default
+    Vue.prototype.$beijingsvg = beijingsvg
+    Vue.prototype.$beijingsvg2 = beijingsvg2
+    Vue.prototype.$zhongguosvg = zhongguosvg
+    Vue.prototype.$zhongguosvg2 = zhongguosvg2
     Vue.prototype._ = _
     // window._ = _
     // window.$env = process.env
