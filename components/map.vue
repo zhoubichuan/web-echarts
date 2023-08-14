@@ -1,5 +1,5 @@
 <template>
-  <div ref="map" style="height: 100%"></div>
+  <div ref="map" style="height: 100%;width: 100%;"></div>
 </template>
   
   <script>
@@ -95,8 +95,8 @@ export default {
         grid: this.grid,
         legend: this.legend,
         series: this.series,
+        mapInstance: "",
       },
-      charts: null,
     };
   },
   methods: {
@@ -152,6 +152,13 @@ export default {
       arr.push(target);
       return arr;
     },
+    mapSetOption(val) {
+      let { title, ...option } = this.config(val, this.mapInstance);
+      this.mapInstance.setOption({
+        title: title ? this.titleTransform(title) : [],
+        ...option,
+      });
+    },
   },
   beforeMount() {
     this.$emit("mapBeforeMount", this.$echarts);
@@ -159,20 +166,19 @@ export default {
   mounted() {
     this.$echarts.registerMap("word", this.$world);
     this.$echarts.registerMap("china", this.$china);
-    this.charts = this.$echarts.init(this.$refs.map);
+    this.mapInstance = this.$echarts.init(this.$refs.map);
     if (!this.config) {
-      this.charts.setOption(this.option);
+      this.mapInstance.setOption(this.option);
+    } else {
+      this.mapSetOption(this.data);
     }
-    this.$emit("echarts", this.charts);
+    this.$emit("echarts", this.mapInstance);
   },
   watch: {
     data: {
       handler(val) {
-        let { title, ...option } = this.config(val, this.charts);
-        this.charts.setOption({
-          title: title ? this.titleTransform(title) : [],
-          ...option,
-        });
+        if (!val.length) return;
+        this.mapSetOption(val);
       },
       deep: true,
     },
