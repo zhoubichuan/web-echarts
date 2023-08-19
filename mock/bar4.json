@@ -3,6 +3,14 @@
   "success": true,
   "result": {
     "status": 200,
-    "data": [[300, 450, 770, 203, 255, 188, 156]]
+    "data": [
+      { "name": "工作票", "value": 300 },
+      { "name": "操作票", "value": 450 },
+      { "name": "抢修", "value": 770 },
+      { "name": "用电调查", "value": 203 },
+      { "name": "设备巡视", "value": 255 },
+      { "name": "现场勘查", "value": 188 },
+      { "name": "到岗到位", "value": 156 }
+    ]
   }
 }
