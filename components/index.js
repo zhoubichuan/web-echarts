@@ -1,3 +1,12 @@
+import custom from "./custom";
+import effectScatter from "./effectScatter";
+import gugu from "./gugu";
+import heatmap from "./heatmap";
+import parallel from "./parallel";
+import pictorialBar from "./pictorialBar";
+import radar from "./radar";
+import themeRiver from "./themeRiver";
+import treemap from "./treemap";
 import bar from "./bar";
 import graph from "./graph";
 import line from "./line";
@@ -9,6 +18,15 @@ import polar from './polar'
 import map from './map'
 import candlestick from './candlestick'
 let components = {
+  custom,
+  effectScatter,
+  gugu,
+  heatmap,
+  parallel,
+  pictorialBar,
+  radar,
+  themeRiver,
+  treemap,
   bar,
   graph,
   line,

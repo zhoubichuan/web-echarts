@@ -5,11 +5,11 @@
     "status": 200,
     "data": [
       {
-        "name": "江苏省",
+        "name": "江苏",
         "value": 5.3
       },
       {
-        "name": "北京市",
+        "name": "北京",
         "value": 3.8
       },
       {
