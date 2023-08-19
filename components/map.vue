@@ -1,5 +1,5 @@
 <template>
-  <div ref="map" style="height: 100%;width: 100%;"></div>
+  <div ref="map" style="height: 100%; width: 100%"></div>
 </template>
   
   <script>
@@ -173,6 +173,14 @@ export default {
       this.mapSetOption(this.data);
     }
     this.$emit("echarts", this.mapInstance);
+    this.mapInstance.getZr().on("click", function (params) {
+      var pixelPoint = [params.offsetX, params.offsetY];
+      var dataPoint = this.mapInstance.convertFromPixel(
+        'geo',
+        pixelPoint
+      );
+      console.log(pixelPoint,dataPoint);
+    }.bind(this));
   },
   watch: {
     data: {
