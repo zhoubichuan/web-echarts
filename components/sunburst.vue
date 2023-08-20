@@ -1,5 +1,5 @@
 <template>
-  <div ref="gugu" style="height: 100%"></div>
+  <div ref="sunburst" style="height: 100%"></div>
 </template>
   
   <script>
@@ -7,7 +7,7 @@ const labelRight = {
   position: "right",
 };
 export default {
-  name: "WebGugu",
+  name: "WebSunburst",
   props: {
     config: {
       type: Function,
@@ -102,7 +102,7 @@ export default {
       default: () => [
         {
           name: "Cost",
-          type: "gugu",
+          type: "sunburst",
           stack: "Total",
           label: {
             show: true,
@@ -193,7 +193,7 @@ export default {
     },
   },
   mounted() {
-    this.charts = this.$echarts.init(this.$refs.gugu);
+    this.charts = this.$echarts.init(this.$refs.sunburst);
     if (!this.config) {
       this.charts.setOption(this.option);
     }

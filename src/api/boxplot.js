@@ -1,8 +1,8 @@
 import request from "@/util/request";
 
-export function getGugu(index = 1) {
+export function getBoxplot(index = 1) {
   return request({
-    url: "mock/gugu" + index + ".json",
+    url: "mock/boxplot" + index + ".json",
     method: "get",
   });
 }

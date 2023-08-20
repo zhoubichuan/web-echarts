@@ -1,0 +1,13 @@
+{
+  "statusCode": 200,
+  "success": true,
+  "result": {
+    "status": 200,
+    "data": [
+      {
+        "value": 50,
+        "name": "SCORE"
+      }
+    ]
+  }
+}
