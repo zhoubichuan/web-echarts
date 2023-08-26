@@ -26,6 +26,7 @@ export default {
     // Vue.prototype.$SliderRight = SliderRight
     Vue.prototype.$service = service
     Vue.prototype.$api = api
+    Vue.prototype.$api.loadApi()
     Vue.prototype.$awaitWarp = function (promise) {
       return promise.then(res => ({ res }), rej => ({ rej })).catch(err => ({ err }))
     }
