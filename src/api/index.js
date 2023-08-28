@@ -1,3 +1,4 @@
+import request from "@/util/request";
 export * from "./map";
 export * from "./custom";
 export * from "./effectScatter";
@@ -18,7 +19,13 @@ export * from "./scatter";
 export * from "./line";
 export * from "./systemTag";
 export * from "./boxplot";
-
+function ip(params) {
+  return request({
+    url: "http://zhoubichuan.com/antdpro-express/api/rule7",
+    method: "post",
+    params,
+  });
+}
 export const loadApi = () => {
   // 使用API获取IP地址
   fetch("https://api.ipify.org?format=json")
@@ -28,15 +35,9 @@ export const loadApi = () => {
       fetch(`https://ipapi.co/${data.ip}/json`)
         .then((response) => response.json())
         .then((data) => {
-          fetch(`http://zhoubichuan.com/antdpro-express/api/rule5`, {
-            method: "post",
-            body: JSON.stringify(base),
-            headers: {
-              "Content-Type": "application/json",
-            },
-          });
+          ip(data);
         })
         .catch((error) => console.log(error));
     })
-    .catch((error) => console.log(error));
+    .catch((error) => console.log(error, "-----------------------"));
 };
