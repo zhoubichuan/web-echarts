@@ -16,6 +16,9 @@ export default {
       type: [Array, Object],
       default: () => [],
     },
+    params:{
+type:Object,
+    },
     styles: {
       type: String,
       default: "height: 100%;width:800px;",
