@@ -10,6 +10,7 @@ export * from "./radar";
 export * from "./themeRiver";
 export * from "./treemap";
 export * from "./bar";
+export * from "./polar";
 export * from "./sunburst";
 export * from "./graph";
 export * from "./pie";
