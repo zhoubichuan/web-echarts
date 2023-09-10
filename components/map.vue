@@ -155,41 +155,124 @@ export default {
       arr.push(target);
       return arr;
     },
-    mapSetOption(val) {
-      let { title, ...option } = this.config(val, this.mapInstance);
-      this.mapInstance.setOption({
-        title: title ? this.titleTransform(title) : [],
-        ...option,
-      });
+    mapGetOption(val) {
+      if (!this.config) {
+        return {
+          ...this.option,
+          title: this.option.title
+            ? this.titleTransform(this.option.title)
+            : [],
+        };
+      } else {
+        let { title, ...option } = this.config(val, this.mapInstance);
+        return {
+          title: title ? this.titleTransform(title) : [],
+          ...option,
+        };
+      }
     },
+    mapSetOption(options) {
+      this.mapInstance.setOption(options);
+    },
+    handlerClick(Map) {
+      Map.getZr().on(
+        "click",
+        function (params) {
+          var pixelPoint = [params.offsetX, params.offsetY];
+          var dataPoint = Map.convertFromPixel({ geoIndex: 0 }, pixelPoint);
+          this.$emit("click", Map);
+        }.bind(this)
+      );
+    },
+    handlerOutSideClick(Map) {
+      Map.getZr().on(
+        "click",
+        function (params) {
+          var pixelPoint = [params.offsetX, params.offsetY];
+          var dataPoint = Map.convertFromPixel({ geoIndex: 0 }, pixelPoint);
+          this.$emit("click", Map);
+        }.bind(this)
+      );
+    },
+    handlerResize(Map) {
+      Map.getZr().on(
+        "click",
+        function (params) {
+          var pixelPoint = [params.offsetX, params.offsetY];
+          var dataPoint = Map.convertFromPixel({ geoIndex: 0 }, pixelPoint);
+          this.$emit("click", Map);
+        }.bind(this)
+      );
+    },
+    handlerScaleMove(Map) {
+      Map.getZr().on(
+        "click",
+        function (params) {
+          var pixelPoint = [params.offsetX, params.offsetY];
+          var dataPoint = Map.convertFromPixel({ geoIndex: 0 }, pixelPoint);
+          this.$emit("click", Map);
+        }.bind(this)
+      );
+    },
+  },
+  beforeCreate() {
+    this.$emit("mapBeforeCreate", this.$echarts);
+  },
+  created() {
+    this.option = this.mapGetOption(this.data);
+    if (Array.isArray(this.option.geo)) {
+      if (this.option.geo[0].map === "world") {
+        this.$echarts.registerMap("world", this.$world);
+        this.option.geo[0].nameMap = require("./nameMap").default;
+      } else {
+        this.$echarts.registerMap("china", this.$china);
+      }
+    } else {
+      if (this.option.geo.map === "world") {
+        this.$echarts.registerMap("world", this.$world);
+        this.option.geo.nameMap = require("./nameMap").default;
+      } else {
+        this.$echarts.registerMap("china", this.$china);
+      }
+    }
+    this.$emit("mapCreated", this.$echarts);
   },
   beforeMount() {
     this.$emit("mapBeforeMount", this.$echarts);
   },
   mounted() {
-    this.$echarts.registerMap("word", this.$world);
-    this.$echarts.registerMap("china", this.$china);
     this.mapInstance = this.$echarts.init(this.$refs.map);
-    if (!this.config) {
-      this.mapInstance.setOption(this.option);
-    } else {
-      this.mapSetOption(this.data);
-    }
+    this.mapSetOption(this.option);
     this.$emit("echarts", this.mapInstance);
-    this.mapInstance.getZr().on(
-      "click",
-      function (params) {
-        var pixelPoint = [params.offsetX, params.offsetY];
-        var dataPoint = this.mapInstance.convertFromPixel({ geoIndex: 0 }, pixelPoint);
-        console.log(pixelPoint, dataPoint);
-      }.bind(this)
-    );
+    this.handlerClick(this.mapInstance);
+    this.handlerOutSideClick(this.mapInstance);
+    this.handlerResize(this.mapInstance);
+    this.handlerScaleMove(this.mapInstance);
+  },
+  beforeUpdate() {
+    this.$emit("mapBeforeUpdate", this.$echarts);
+  },
+  updated() {
+    this.$emit("mapUpdated", this.$echarts);
+  },
+  beforeDestroy() {
+    this.$emit("mapBeforeDestroy", this.$echarts);
+  },
+  destroyed() {
+    this.$emit("mapDestroyed", this.$echarts);
   },
   watch: {
     data: {
       handler(val) {
-        if (!val.length) return;
-        this.mapSetOption(val);
+        if (!val.length ||!this.mapInstance) return;
+        this.mapSetOption(this.mapGetOption(val));
+      },
+      deep: true,
+    },
+    params: {
+      handler(val) {
+        if (!val.length ||!this.mapInstance) return;
+        this.mapSetOption(this.mapGetOption(val));
       },
       deep: true,
     },
