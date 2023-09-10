@@ -4,6 +4,9 @@ import axios from 'axios'
 import service from '@/util/request.js'
 import * as echarts from 'echarts'
 import * as china from './static/json/china.json'
+import * as china2 from './static/json/china2.json'
+import * as china3 from './static/json/china3.json'
+import * as china4 from './static/json/china4.json'
 import * as world from './static/json/world.json'
 import beijingsvg from './static/beijingsvg'
 import beijingsvg2 from './static/beijingsvg2'
@@ -15,6 +18,9 @@ export default {
   install (Vue) {
     Vue.prototype.$echarts = echarts
     Vue.prototype.$china = china.default
+    Vue.prototype.$china2 = china2.default
+    Vue.prototype.$china3 = china3.default
+    Vue.prototype.$china4 = china4.default
     Vue.prototype.$world = world.default
     Vue.prototype.$beijingsvg = beijingsvg
     Vue.prototype.$beijingsvg2 = beijingsvg2
