@@ -16,8 +16,8 @@ export default {
       type: [Array, Object],
       default: () => [],
     },
-    params:{
-type:Object,
+    params: {
+      type: Object,
     },
     styles: {
       type: String,
@@ -176,14 +176,14 @@ type:Object,
       this.mapSetOption(this.data);
     }
     this.$emit("echarts", this.mapInstance);
-    this.mapInstance.getZr().on("click", function (params) {
-      var pixelPoint = [params.offsetX, params.offsetY];
-      var dataPoint = this.mapInstance.convertFromPixel(
-        'geo',
-        pixelPoint
-      );
-      console.log(pixelPoint,dataPoint);
-    }.bind(this));
+    this.mapInstance.getZr().on(
+      "click",
+      function (params) {
+        var pixelPoint = [params.offsetX, params.offsetY];
+        var dataPoint = this.mapInstance.convertFromPixel({ geoIndex: 0 }, pixelPoint);
+        console.log(pixelPoint, dataPoint);
+      }.bind(this)
+    );
   },
   watch: {
     data: {
