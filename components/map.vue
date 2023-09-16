@@ -1,5 +1,11 @@
 <template>
-  <div ref="map" style="height: 100%; width: 100%"></div>
+  <div class="wrap-map">
+    <div ref="map" class="map"></div>
+    <div class="data-select">
+      <input v-model="dataUrl" />
+      <button @click="handlerChangeData">切换数据</button>
+    </div>
+  </div>
 </template>
   
   <script>
@@ -92,6 +98,7 @@ export default {
   },
   data() {
     return {
+      dataUrl: "",
       option: {
         title: this.titleTransform(this.title),
         tooltip: this.tooltip,
@@ -103,6 +110,9 @@ export default {
     };
   },
   methods: {
+    handlerChangeData() {
+      this.$emit("changeData", this.dataUrl);
+    },
     titleTransform({ text, subtext, ...others }) {
       let arr = [];
       let target = {};
@@ -264,14 +274,14 @@ export default {
   watch: {
     data: {
       handler(val) {
-        if (!val.length ||!this.mapInstance) return;
+        if (!val.length || !this.mapInstance) return;
         this.mapSetOption(this.mapGetOption(val));
       },
       deep: true,
     },
     params: {
       handler(val) {
-        if (!val.length ||!this.mapInstance) return;
+        if (!val.length || !this.mapInstance) return;
         this.mapSetOption(this.mapGetOption(val));
       },
       deep: true,
@@ -279,3 +289,18 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+.wrap-map {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  .map {
+    height: 100%;
+    width: 100%;
+  }
+  .data-select {
+    position: absolute;
+  }
+}
+</style>
