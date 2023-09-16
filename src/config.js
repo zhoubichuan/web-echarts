@@ -8,6 +8,7 @@ import * as china2 from './static/json/china2.json'
 import * as china3 from './static/json/china3.json'
 import * as china4 from './static/json/china4.json'
 import * as world from './static/json/world.json'
+import * as world2 from './static/json/world2.json'
 import beijingsvg from './static/beijingsvg'
 import beijingsvg2 from './static/beijingsvg2'
 import zhongguosvg from './static/zhongguosvg'
@@ -22,6 +23,7 @@ export default {
     Vue.prototype.$china3 = china3.default
     Vue.prototype.$china4 = china4.default
     Vue.prototype.$world = world.default
+    Vue.prototype.$world2 = world2.default
     Vue.prototype.$beijingsvg = beijingsvg
     Vue.prototype.$beijingsvg2 = beijingsvg2
     Vue.prototype.$zhongguosvg = zhongguosvg
