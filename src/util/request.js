@@ -61,7 +61,11 @@ service.interceptors.response.use(
         });
       }
     } else {
-      return Promise.resolve(res.data.result);
+      if (res.config.url.includes("mock")) {
+        return Promise.resolve(res.data.result);
+      } else {
+        return Promise.resolve(res.data);
+      }
     }
   },
   (error) => {
