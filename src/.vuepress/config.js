@@ -22,6 +22,7 @@ module.exports = {
     httpRequest(app);
   },
   alias: {
+    "components": path.resolve(__dirname, "../../components/"),
     mock: path.resolve(__dirname, "../../mock/"),
     "@": path.resolve(__dirname, "../../src/"),
   },
