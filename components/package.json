@@ -1,0 +1,19 @@
+{
+  "name": "web-echarts",
+  "version": "1.0.0",
+  "description": "web-echarts",
+  "main": "index.js",
+  "author": "zhoubichaun@icloud.com",
+  "hommepage": "https://github.com/zhoubichuan/web-echarts",
+  "license": "MIT",
+  "type":"module",
+  "scripts": {
+    "build": "cnpm i && gulp"
+  },
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0",
+    "gulp-clean": "^0.4.0",
+    "gulp-uglify": "^3.0.2"
+  }
+}
