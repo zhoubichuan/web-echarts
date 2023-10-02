@@ -23,7 +23,8 @@ module.exports = {
   },
   alias: {
     "components": path.resolve(__dirname, "../../components/"),
-    mock: path.resolve(__dirname, "../../mock/"),
+    "mock": path.resolve(__dirname, "./public/mock/"),
+    "demo": path.resolve(__dirname, "./public/demo"),
     "@": path.resolve(__dirname, "../../src/"),
   },
   postcss: {
