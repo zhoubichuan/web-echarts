@@ -25,3 +25,10 @@ jobs:
           port:  ${{ secrets.PORT }}
           username: ${{ secrets.USER }}
           password: ${{ secrets.PASSWORD }}
+        with:
+          source: "demo/*"
+          host: ${{ secrets.HOST }}
+          target: "/usr/src/zhoubichuan/prod/web-echarts/"
+          port:  ${{ secrets.PORT }}
+          username: ${{ secrets.USER }}
+          password: ${{ secrets.PASSWORD }}
