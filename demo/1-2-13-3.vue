@@ -17,8 +17,8 @@ export default {
     };
   },
   async created() {
-    this.getCurrentLocal();
-    this.getData(url);
+    // this.getCurrentLocal();
+    this.getData(8);
   },
   methods: {
     getCurrentLocal() {
@@ -69,13 +69,12 @@ export default {
         geo: [
           {
             map: "china",
-            aspectScale: 0.75, //长宽比
-            zoom: 1.1,
+            zoom: 1.14,
+            top: "10%",
+            right: "16%",
+            left: "16%",
+            bottom: "10%",
             roam: true,
-            top: "16%",
-            right: "20%",
-            left: "20%",
-            bottom: "-10%",
             itemStyle: {
               areaColor: "#e5ecf9",
               shadowColor: "rgba(158,201,243,0.85)",
@@ -109,8 +108,12 @@ export default {
         series: [
           {
             map: "china", //使用
-            zoom: 1.1,
             type: "map",
+            zoom: 1.14,
+            top: "10%",
+            right: "16%",
+            left: "16%",
+            bottom: "10%",
             roam: true,
             ...{
               // 普通样式
@@ -266,7 +269,7 @@ export default {
               opacity: 0.3, //尾迹线条透明度
               curveness: -2, //尾迹线条曲直度
             },
-            // data: data
+            data: data
           },
         ],
       };

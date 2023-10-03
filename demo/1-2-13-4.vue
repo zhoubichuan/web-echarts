@@ -142,12 +142,11 @@ export default {
         geo: {
           roam: true,
           map: "china",
-          zoom: 0.8,
-          top: "16%",
-          right: "20%",
-          left: "20%",
-          bottom: "-10%",
-          layoutSize: "70%",
+          zoom: 1.14,
+          top: "10%",
+          right: "16%",
+          left: "16%",
+          bottom: "10%",
           ...{
             // 普通样式
             label: {
