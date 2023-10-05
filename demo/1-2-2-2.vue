@@ -13,7 +13,7 @@ export default {
   async created() {
     let res = await this.$api.getBar(2);
     if (res.data) {
-      this.data = res.data;
+      this.data = res.data.map((item) => ({ ...item, value: item.value2 }));
     }
   },
   methods: {
