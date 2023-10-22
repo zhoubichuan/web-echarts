@@ -18,7 +18,7 @@ export default {
   },
   async created() {
     // this.getCurrentLocal();
-    this.getData(8);
+    this.getData(1);
   },
   methods: {
     getCurrentLocal() {
