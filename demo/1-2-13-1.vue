@@ -15,7 +15,7 @@ export default {
     };
   },
   created() {
-    this.getData(1);
+    this.getData(5);
   },
   methods: {
     async getData(url) {
