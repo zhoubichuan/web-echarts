@@ -1,8 +1,11 @@
 <template>
-  <div ref="code">
+  <div ref="code" class="page">
     <ClientOnly>
-      <!-- <a href="/Example1.vue">下载</a> -->
-      <div class="container" v-if="show">
+      <div class="bar">
+        <div @click="handleClick">刷新</div>
+        <!-- <a href="/Example1.vue">下载</a> -->
+      </div>
+      <div class="container" v-if="show" :key="pageIndex">
         <slot>
           <iframe
             ref="iframe"
@@ -15,7 +18,7 @@
           ></iframe>
         </slot>
       </div>
-      <div v-else>...正在加载中</div>
+      <div v-else class="container">...正在加载中</div>
       <div>
         <!-- <code>{{ require("./Example1.vue").default }}</code> -->
       </div>
@@ -33,10 +36,14 @@ export default {
   },
   data() {
     return {
+      pageIndex: 0,
       show: false,
     };
   },
   methods: {
+    handleClick() {
+      this.pageIndex++;
+    },
     handleScroll() {
       let judge =
         window.innerHeight + window.scrollY > this.$refs.code.offsetTop + 100;
@@ -65,10 +72,19 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.container {
-  width: 100%;
-  border: 1px solid lightcoral;
-  border-radius: 5px;
-  padding: 5px;
+.page {
+  position: relative;
+  padding-top: 30px;
+  .bar {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+  }
+  .container {
+    width: 100%;
+    border: 1px solid lightcoral;
+    border-radius: 5px;
+    padding: 5px;
+  }
 }
 </style>
