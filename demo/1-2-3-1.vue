@@ -49,16 +49,13 @@ export default {
             name: "数据图",
             type: "pie",
             radius: ["25%", "58%"],
-            color: data.map((i) => i.color),
             label: {
-              normal: {
-                position: "inner",
-                formatter: "{d}%",
-                textStyle: {
-                  color: "#fff",
-                  fontWeight: "bold",
-                  fontSize: 14,
-                },
+              position: "inner",
+              formatter: "{d}%",
+              textStyle: {
+                color: "#fff",
+                fontWeight: "bold",
+                fontSize: 14,
               },
             },
             data: data,

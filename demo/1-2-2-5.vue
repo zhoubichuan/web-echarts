@@ -82,9 +82,9 @@ let data = {
 };
 let yAxisData = new Set();
 let legendData = [];
-_.forEach(data, (d) => {
+data.forEach((d) => {
   legendData.push(d.name);
-  _.forEach(d.data, (item) => {
+  d.data.forEach((item) => {
     yAxisData.add(item.label);
   });
 });
