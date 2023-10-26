@@ -1,5 +1,5 @@
 <template>
-  <div ref="code" class="page">
+  <div ref="code" class="code-page">
     <ClientOnly>
       <div class="bar">
         <div @click="handleClick">刷新</div>
@@ -11,7 +11,7 @@
             ref="iframe"
             :src="url"
             width="100%"
-            height="520"
+            height="100%"
             frameborder="no"
             border="0"
             scrolling="yes"
@@ -72,7 +72,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.page {
+.code-page {
   position: relative;
   padding-top: 30px;
   .bar {
