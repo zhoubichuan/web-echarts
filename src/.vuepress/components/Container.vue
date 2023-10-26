@@ -85,6 +85,7 @@ export default {
     border: 1px solid lightcoral;
     border-radius: 5px;
     padding: 5px;
+    height: 80vh;
   }
 }
 </style>
