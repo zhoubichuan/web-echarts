@@ -62,7 +62,6 @@ module.exports = {
       name: "[name]_[hash]",
       context: process.cwd(),
     }),
-    [require("./demo-preview")],
     [
       "vuepress-plugin-anchor-toc",
       {
