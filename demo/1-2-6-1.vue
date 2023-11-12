@@ -119,7 +119,7 @@ export default {
                     { offset: 0, color: "rgba(255, 145, 124, 0.1)" },
                     { offset: 1, color: "rgba(255, 145, 124, 0.9)" },
                   ],
-                  global: false,
+                  
                 },
               },
             ],

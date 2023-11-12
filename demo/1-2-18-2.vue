@@ -27,7 +27,6 @@ export default {
               color: "#111629",
             },
           ],
-          globalCoord: false,
         },
         title: {
           text: "转化率",

@@ -106,7 +106,6 @@ export default {
                       color: "rgba(232, 94, 106, .1)", //  100%  处的颜色
                     },
                   ],
-                  global: false, //  缺省为  false
                 },
               },
               emphasis: {

@@ -157,7 +157,7 @@ export default {
                       { offset: 0, color: "rgba(66,99,232,1)" },
                       { offset: 1, color: "rgba(55,183,249,1)" },
                     ],
-                    global: false,
+                    
                   },
                 },
               },
@@ -263,7 +263,7 @@ export default {
                   { offset: 0.5, color: "rgba(255 255 0 ,0.2)" },
                   { offset: 1, color: "rgba(255 255 0 ,0)" },
                 ],
-                global: false,
+                
               },
               width: 0.3, //线条宽度
               opacity: 0.3, //尾迹线条透明度
