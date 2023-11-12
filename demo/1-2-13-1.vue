@@ -15,7 +15,7 @@ export default {
     };
   },
   created() {
-    this.getData(5);
+    this.getData(1);
   },
   methods: {
     async getData(url) {
@@ -103,7 +103,6 @@ export default {
                     { offset: 0, color: "rgba(66,99,232,1)" },
                     { offset: 1, color: "rgba(55,183,249,1)" },
                   ],
-                  
                 },
               },
             },
