@@ -4,6 +4,7 @@
 </template>
 
 <script>
+import _ from 'lodash'
 let data = {
   female: {
     name: "女性",
@@ -135,14 +136,7 @@ export default {
             containLabel: true,
             bottom,
           },
-        ].map((item) =>
-          _.merge(
-            {
-              top,
-            },
-            item
-          )
-        ),
+        ].map((item) => ({ ...item, top })),
         xAxis: [
           {
             type: "value",
@@ -180,20 +174,19 @@ export default {
               show: true,
             },
           },
-        ].map((item) =>
-          _.merge(item, {
-            axisLabel: {
-              color: "#949AA8",
-              margin: 0,
+        ].map((item) => ({
+          ...item,
+          axisLabel: {
+            color: "#949AA8",
+            margin: 0,
+          },
+          splitLine: {
+            lineStyle: {
+              color: "#E0E0E0",
+              type: "dashed",
             },
-            splitLine: {
-              lineStyle: {
-                color: "#E0E0E0",
-                type: "dashed",
-              },
-            },
-          })
-        ),
+          },
+        })),
         yAxis: [
           {
             position: "right",
@@ -227,21 +220,20 @@ export default {
               show: true,
             },
           },
-        ].map((item) => {
-          return _.merge(item, {
-            type: "category",
-            inverse: false,
-            axisLine: {
-              lineStyle: {
-                color: "#E0E0E0",
-              },
+        ].map((item) => ({
+          ...item,
+          type: "category",
+          inverse: false,
+          axisLine: {
+            lineStyle: {
+              color: "#E0E0E0",
             },
-            axisTick: {
-              show: false,
-            },
-            data: yAxisData,
-          });
-        }),
+          },
+          axisTick: {
+            show: false,
+          },
+          data: yAxisData,
+        })),
         series: [
           {
             name: _.get(data, "male.name"),

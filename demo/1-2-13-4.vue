@@ -10,9 +10,9 @@ export default {
     };
   },
   async created() {
-    let res = await this.$api.getMap(2).map((item) => ({ ...item, value: item.value2 }));
+    let res = await this.$api.getMap(2);
     if (res.data) {
-      this.data = res.data;
+      this.data = res.data.map((item) => ({ ...item, value: item.descript }));
     }
   },
   methods: {

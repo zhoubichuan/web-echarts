@@ -51,7 +51,7 @@
   "dependencies": {
     "axios": "0.21.1",
     "echarts": "5.2.0",
-    "echarts-gl": "^2.0.9",
+    "echarts-gl": "2.0.0",
     "element-ui": "2.3.7",
     "i18n": "0.15.1",
     "lodash": "4.17.21",

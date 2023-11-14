@@ -13,7 +13,6 @@ import beijingsvg from './static/beijingsvg'
 import beijingsvg2 from './static/beijingsvg2'
 import zhongguosvg from './static/zhongguosvg'
 import zhongguosvg2 from './static/zhongguosvg2'
-import "echarts-gl";
 
 export default {
   install (Vue) {

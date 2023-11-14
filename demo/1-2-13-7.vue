@@ -15,12 +15,9 @@ export default {
     };
   },
   async mounted() {
-    let res = await this.$api.getMap(4);
+    let res = await this.$api.getMap(6);
     if (res.data) {
-      this.data = res.data.reduce(
-        (p, c) => p.concat(...c.countrys.map((i) => i.citys)),
-        []
-      );
+      this.data = res.data;
     }
   },
   methods: {
@@ -163,8 +160,8 @@ export default {
               color: "#0579FA", //字体和点颜色
             },
             data: data.map((i) => ({
-              name: i.cityname,
-              value: [i.lon, i.lat],
+              name: i.name,
+              value: i.images,
             })),
           },
         ],

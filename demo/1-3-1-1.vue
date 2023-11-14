@@ -14,7 +14,7 @@ export default {
   async created() {
     let res = await this.$api.getPie(1);
     if (res.data) {
-      this.data = res.data;
+      this.data = res.data.map((item) => ({ ...item, value: item.descript }));
     }
   },
   methods: {

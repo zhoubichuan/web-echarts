@@ -20,7 +20,7 @@ export default {
     async getData(url) {
       let res = await this.$api.getMap(url);
       if (res.data) {
-        this.data = res.data;
+        this.data = res.data.map((item) => ({ ...item, value: item.descript }));
       }
     },
     beforeHandle(echarts) {

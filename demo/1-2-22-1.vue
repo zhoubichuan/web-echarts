@@ -14,7 +14,7 @@ export default {
     if (res.data) {
       this.data = res.data.map((item) => [
         ...item.value,
-        item.value2,
+        item.descript,
         item.name,
       ]);
     }
