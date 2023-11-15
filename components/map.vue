@@ -221,7 +221,7 @@ export default {
             clearTimeout(timer);
           }
         } else {
-          this.#$nextTick(() => {
+          this.$nextTick(() => {
             this.mapInstance.resize();
             this.$emit("resize");
           });
