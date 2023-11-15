@@ -1,6 +1,6 @@
 <template>
   <WebMap
-    @echarts="handleEvent"
+    @mapMounted="mapMounted"
     :config="getOptions"
     :data="data"
     @mapCreated="mapCreated"
@@ -15,7 +15,7 @@ export default {
     };
   },
   async created() {
-    let res = await this.$api.getMap();
+    let res = await this.$api.getMap(1);
     if (res.data) {
       this.data = res.data.map((item) => ({ ...item, value: item.descript }));
     }
@@ -24,17 +24,13 @@ export default {
     mapCreated(echarts) {
       echarts.registerMap("china", this.$china2);
     },
-    handleEvent(e) {},
+    mapMounted(e) {},
     getOptions(data) {
       return {
         animationDurationUpdate: 0,
         title: {
-          top: 10,
           text: "平面图地图3D效果，整体地图渐变色，并且两层同步拖拽",
-          left: "center",
-          textStyle: {
-            color: "#fff",
-          },
+          subtext: "单位：元",
         },
         geo: {
           map: "china",
@@ -87,7 +83,6 @@ export default {
                     { offset: 0, color: "rgba(66,99,232,1)" },
                     { offset: 1, color: "rgba(55,183,249,1)" },
                   ],
-                  
                 },
               },
             },

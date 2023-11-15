@@ -1,5 +1,5 @@
 <template>
-  <WebMap @echarts="handleEvent" :config="getOptions" :data="data"></WebMap>
+  <WebMap @mapMounted="mapMounted" :config="getOptions" :data="data"></WebMap>
 </template>
 
 <script>
@@ -16,7 +16,7 @@ export default {
     }
   },
   methods: {
-    handleEvent(e) {
+    mapMounted(e) {
       e.on("georoam", function (params) {
         var option = e.getOption();
         if (params.zoom != null && params.zoom != undefined) {

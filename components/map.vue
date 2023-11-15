@@ -1,10 +1,10 @@
 <template>
   <div class="wrap-map">
     <div ref="map" class="map"></div>
-    <div class="data-select">
+    <!-- <div class="data-select">
       <input v-model="dataUrl" />
       <button @click="handlerChangeData">切换数据</button>
-    </div>
+    </div> -->
   </div>
 </template>
   
@@ -185,6 +185,7 @@ export default {
       this.mapInstance.setOption(options);
     },
     handlerClick(Map) {
+      //地图点击事件
       Map.getZr().on(
         "click",
         function (params) {
@@ -195,6 +196,7 @@ export default {
       );
     },
     handlerOutSideClick(Map) {
+      //地图空白处点击事件
       Map.getZr().on(
         "click",
         function (params) {
@@ -205,16 +207,29 @@ export default {
       );
     },
     handlerResize(Map) {
-      Map.getZr().on(
-        "click",
-        function (params) {
-          var pixelPoint = [params.offsetX, params.offsetY];
-          var dataPoint = Map.convertFromPixel({ geoIndex: 0 }, pixelPoint);
-          this.$emit("click", Map);
-        }.bind(this)
-      );
+      //窗口大小改变
+      let timer;
+      window.addEventListener("resize", () => {
+        if (this.mapSetOption) {
+          if (!timer) {
+            timer = setTimeout(() => {
+              this.mapSetOption(this.mapGetOption(this.data));
+              this.mapInstance.resize();
+              this.$emit("resize");
+            }, 100);
+          } else {
+            clearTimeout(timer);
+          }
+        } else {
+          this.#$nextTick(() => {
+            this.mapInstance.resize();
+            this.$emit("resize");
+          });
+        }
+      });
     },
     handlerScaleMove(Map) {
+      //地图移动和缩放事件
       Map.getZr().on(
         "click",
         function (params) {
@@ -253,7 +268,7 @@ export default {
   mounted() {
     this.mapInstance = this.$echarts.init(this.$refs.map);
     this.mapSetOption(this.option);
-    this.$emit("echarts", this.mapInstance);
+    this.$emit("mapMounted", this.mapInstance);
     this.handlerClick(this.mapInstance);
     this.handlerOutSideClick(this.mapInstance);
     this.handlerResize(this.mapInstance);

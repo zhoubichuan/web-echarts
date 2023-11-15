@@ -157,7 +157,7 @@ export default {
             type: "effectScatter",
             coordinateSystem: "geo",
             symbolSize: function (val) {
-              return [6, 3];
+              return [12, 6];
             },
             showEffectOn: "emphasis",
             zlevel: 2,
@@ -192,7 +192,7 @@ export default {
                 },
               },
               itemStyle: {
-                color: "#0579FA", //字体和点颜色
+                color: "transparent", //字体和点颜色
               },
             },
             emphasis: {
@@ -220,7 +220,7 @@ export default {
                 },
               },
               itemStyle: {
-                color: "#0579FA", //字体和点颜色
+                color: "none", //字体和点颜色
               },
             },
             ...{

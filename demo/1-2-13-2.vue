@@ -1,5 +1,11 @@
 <template>
-  <WebMap ref="map" :config="getOptions" :data="data"></WebMap>
+  <WebMap
+    :config="getOptions"
+    :data="data"
+    @mapCreated="mapCreated"
+    @mapMounted="mapMounted"
+    @changeData="getData"
+  ></WebMap>
 </template>
 
 <script>
@@ -16,30 +22,35 @@ export default {
       ["山东", "499", "山东大区", "34", "61", "67"],
       ["云南", "199", "西南大区", "800", "69", "389"],
     ];
-
-    var count = 0;
-    var timeTicket = null;
-    var dataLength = 3;
-    timeTicket && clearInterval(timeTicket);
-    timeTicket = setInterval(() => {
-      this.$refs.map.mapInstance.dispatchAction({
-        type: "downplay",
-        seriesIndex: 0,
-      });
-      this.$refs.map.mapInstance.dispatchAction({
-        type: "highlight",
-        seriesIndex: 0,
-        dataIndex: count % dataLength,
-      });
-      this.$refs.map.mapInstance.dispatchAction({
-        type: "showTip",
-        seriesIndex: 0,
-        dataIndex: count % dataLength,
-      });
-      count++;
-    }, 1000);
   },
   methods: {
+    mapMounted(Map) {
+      var count = 0;
+      var timeTicket = null;
+      var dataLength = 3;
+      timeTicket && clearInterval(timeTicket);
+      timeTicket = setInterval(() => {
+        Map.dispatchAction({
+          type: "downplay",
+          geoIndex: 0,
+        });
+        Map.dispatchAction({
+          type: "highlight",
+          geoIndex: 0,
+          dataIndex: count % dataLength,
+        });
+        Map.dispatchAction({
+          type: "showTip",
+          geoIndex: 0,
+          dataIndex: count % dataLength,
+        });
+        count++;
+      }, 1000);
+    },
+    async getData(url) {},
+    mapCreated(echarts) {
+      echarts.registerMap("china", this.$china1);
+    },
     getOptions(data) {
       return {
         title: {
@@ -99,67 +110,68 @@ export default {
             color: ["#999999"],
           },
         },
-        geo: {
-          roam: true,
-          map: "china",
-          scaleLimit: {
-            min: 1,
-            max: 20,
-          },
-          zoom: 1.14,
-          top: "10%",
-          right: "16%",
-          left: "16%",
-          bottom: "10%",
-          ...{
-            // 普通样式
-            label: {
-              show: true,
-              color: "rgba(130,143,200,1)",
+        geo: [
+          {
+            roam: true,
+            map: "china",
+            scaleLimit: {
+              min: 1,
+              max: 20,
             },
-            itemStyle: {
-              show: true,
-              borderWidth: 1,
-              borderColor: "rgba(196,207,254,1)",
-              areaColor: "rgba(229,236,249,1)",
-            },
-          },
-          emphasis: {
-            // hover样式
-            label: {
-              show: true,
-              color: "rgba(130,143,200,1)",
-            },
-            itemStyle: {
-              borderColor: "rgba(196,207,254,1)",
-              borderWidth: 1,
-              areaColor: "rgba(229,236,249,1)",
-            },
-          },
-          ...{
-            // 选中样式
-            selectedMode: "single",
-            select: {
+            zoom: 1.14,
+            top: "10%",
+            right: "16%",
+            left: "16%",
+            bottom: "10%",
+            ...{
+              // 普通样式
               label: {
-                color: "rgba(255,255,255,1)",
+                show: true,
+                color: "rgba(130,143,200,1)",
               },
               itemStyle: {
-                areaColor: {
-                  type: "linear",
-                  x: 0,
-                  y: 0,
-                  x2: 0,
-                  y2: 1,
-                  colorStops: [
-                    { offset: 0, color: "rgba(66,99,232,1)" },
-                    { offset: 1, color: "rgba(55,183,249,1)" },
-                  ],
-                  
+                show: true,
+                borderWidth: 1,
+                borderColor: "rgba(196,207,254,1)",
+                areaColor: "rgba(229,236,249,1)",
+              },
+            },
+            emphasis: {
+              // hover样式
+              label: {
+                show: true,
+                color: "rgba(130,143,200,1)",
+              },
+              itemStyle: {
+                borderColor: "rgba(196,207,254,1)",
+                borderWidth: 1,
+                areaColor: "rgba(229,236,249,1)",
+              },
+            },
+            ...{
+              // 选中样式
+              selectedMode: "single",
+              select: {
+                label: {
+                  color: "rgba(255,255,255,1)",
+                },
+                itemStyle: {
+                  areaColor: {
+                    type: "linear",
+                    x: 0,
+                    y: 0,
+                    x2: 0,
+                    y2: 1,
+                    colorStops: [
+                      { offset: 0, color: "rgba(66,99,232,1)" },
+                      { offset: 1, color: "rgba(55,183,249,1)" },
+                    ],
+                  },
                 },
               },
             },
           },
-        },
+        ],
         series: [
           {
             type: "map",
@@ -201,6 +213,7 @@ export default {
                 areaColor: "#FFAE00",
               },
             },
+            data: this.data,
           },
         ],
       };

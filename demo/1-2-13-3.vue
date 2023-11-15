@@ -4,7 +4,7 @@
     :data="data"
     @mapCreated="mapCreated"
     @changeData="getData"
-    @echarts="handleEvent"
+    @mapMounted="mapMounted"
   ></WebMap>
 </template>
 
@@ -43,16 +43,16 @@ export default {
       }
     },
     mapCreated() {},
-    handleEvent(e) {
-      e.on("georoam", function (params) {
-        var option = e.getOption();
+    mapMounted(Map) {
+      Map.on("georoam", function (params) {
+        var option = Map.getOption();
         if (params.zoom != null && params.zoom != undefined) {
           option.geo[0].zoom = option.series[0].zoom;
           option.geo[0].center = option.series[0].center;
         } else {
           option.series[0].center = option.geo[0].center;
         }
-        e.setOption(option);
+        Map.setOption(option);
       });
     },
     getOptions(data) {
