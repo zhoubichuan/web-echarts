@@ -8,7 +8,50 @@
 </template>
 
 <script>
-let geoLayer = (data, config = []) => {
+let geoLayer = (data, config = [{}]) => {
+  let regions = {
+    sea: {
+      name: "南海诸岛",
+      ...{
+        // 普通样式
+        label: {
+          show: true,
+          color: "rgba(130,143,200,1)",
+        },
+        itemStyle: {
+          show: true,
+          borderWidth: 1,
+          borderColor: "rgba(196,207,254,1)",
+          areaColor: "rgba(229,236,249,1)",
+        },
+      },
+      emphasis: {
+        // hover样式
+        label: {
+          show: true,
+          color: "rgba(130,143,200,1)",
+        },
+        itemStyle: {
+          borderColor: "rgba(196,207,254,1)",
+          borderWidth: 1,
+          areaColor: "rgba(229,236,249,1)",
+        },
+      },
+    },
+    shadowMap: {
+      name: "country",
+      label: {
+        show: false,
+      },
+      itemStyle: {
+        areaColor: "#e5ecf9",
+        shadowColor: "rgba(158,201,243,0.85)",
+        borderColor: "rgba(183,219,255,1)",
+        shadowOffsetX: 9,
+        shadowOffsetY: 9,
+      },
+    },
+  };
   let layer = config.map((item) => ({
     roam: true,
     map: "china",
@@ -67,49 +110,7 @@ let geoLayer = (data, config = []) => {
           },
         },
       },
-      regions: [
-        {
-          name: "南海诸岛",
-          ...{
-            // 普通样式
-            label: {
-              show: true,
-              color: "rgba(130,143,200,1)",
-            },
-            itemStyle: {
-              show: true,
-              borderWidth: 1,
-              borderColor: "rgba(196,207,254,1)",
-              areaColor: "rgba(229,236,249,1)",
-            },
-          },
-          emphasis: {
-            // hover样式
-            label: {
-              show: true,
-              color: "rgba(130,143,200,1)",
-            },
-            itemStyle: {
-              borderColor: "rgba(196,207,254,1)",
-              borderWidth: 1,
-              areaColor: "rgba(229,236,249,1)",
-            },
-          },
-        },
-        {
-          name: "country",
-          label: {
-            show: false,
-          },
-          itemStyle: {
-            areaColor: "#e5ecf9",
-            shadowColor: "rgba(158,201,243,0.85)",
-            borderColor: "rgba(183,219,255,1)",
-            shadowOffsetX: 9,
-            shadowOffsetY: 9,
-          },
-        },
-      ],
+      regions: [regions.sea, regions.shadowMap],
     },
   }));
   return layer;
@@ -242,6 +243,7 @@ export default {
       if (res.data) {
         this.data = res.data.map((item) => ({
           ...item,
+          filter: "1",
           value: [item.latitude, item.longitude],
         }));
       }
@@ -267,7 +269,7 @@ export default {
             );
           },
         },
-        geo: geoLayer(data, config),
+        geo: geoLayer(data),
         series: [
           ...serierLayer.effectScatter(data, [
             {
