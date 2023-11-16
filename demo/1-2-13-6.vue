@@ -1,5 +1,10 @@
 <template>
-  <div ref="pie" style="height: 100%"></div>
+  <WebMap
+    ref="map"
+    :config="getOptions"
+    :data="data"
+    @mapCreated="mapCreated"
+  ></WebMap>
 </template>
 
 <script>
@@ -280,7 +285,15 @@ var mapData = [
 export default {
   data() {
     return {
-      option: {
+      data: [],
+    };
+  },
+  methods: {
+    mapCreated(echarts) {
+      echarts.registerMap("china", this.$china2);
+    },
+    getOptions(data) {
+      return {
         tooltip: {
           show: true,
           formatter: function (params) {
@@ -355,7 +368,6 @@ export default {
                     { offset: 0, color: "rgba(66,99,232,1)" },
                     { offset: 1, color: "rgba(55,183,249,1)" },
                   ],
-                  
                 },
               },
             },
@@ -396,12 +408,8 @@ export default {
             data: mapData,
           },
         ],
-      },
-    };
-  },
-  mounted() {
-    let charts = this.$echarts.init(this.$refs.pie);
-    charts.setOption(this.option);
+      };
+    },
   },
 };
 </script>
