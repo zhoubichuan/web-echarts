@@ -1,10 +1,5 @@
 <template>
-  <WebMap
-    :data="data"
-    :params="params"
-    @mapCreated="mapCreated"
-    @changeData="getData"
-  ></WebMap>
+  <WebMapConfig :data="data" :params="params"></WebMapConfig>
 </template>
 
 <script>

@@ -18,6 +18,7 @@ import scatter from "./scatter";
 import tree from "./tree";
 import polar from './polar'
 import map from './map'
+import mapConfig from './mapConfig'
 import candlestick from './candlestick'
 let components = {
   custom,
@@ -40,6 +41,7 @@ let components = {
   tree,
   polar,
   map,
+  mapConfig,
   candlestick
 };
 export default {
