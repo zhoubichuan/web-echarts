@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import WebMap from "./map";
+import WebMap from "./map.vue";
 import { geoLayer, serierLayer } from "./mapTools.js";
 export default {
   name: "WebMapConfig",

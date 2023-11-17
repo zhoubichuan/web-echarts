@@ -186,7 +186,7 @@ export default {
     },
     handlerClick(Map) {
       //地图点击事件
-      Map.getZr().on(
+      Map.on(
         "click",
         function (params) {
           var pixelPoint = [params.offsetX, params.offsetY];
@@ -202,7 +202,7 @@ export default {
         function (params) {
           var pixelPoint = [params.offsetX, params.offsetY];
           var dataPoint = Map.convertFromPixel({ geoIndex: 0 }, pixelPoint);
-          this.$emit("click", Map);
+          this.$emit("outSideClick", Map);
         }.bind(this)
       );
     },
@@ -213,32 +213,50 @@ export default {
         if (this.mapSetOption) {
           if (!timer) {
             timer = setTimeout(() => {
-              this.mapSetOption(this.mapGetOption(this.data));
-              this.mapInstance.resize();
-              this.$emit("resize");
+              Map.dispatchAction({ type: "restore" });
+              this.mapSetOption(this.mapGetOption(this.data, this.params));
+              Map.resize();
+              this.$emit("resize", Map);
             }, 100);
           } else {
             clearTimeout(timer);
           }
         } else {
           this.$nextTick(() => {
-            this.mapInstance.resize();
-            this.$emit("resize");
+            Map.resize();
+            this.$emit("resize", Map);
           });
         }
       });
     },
     handlerScaleMove(Map) {
       //地图移动和缩放事件
-      Map.getZr().on(
-        "click",
+      Map.on(
+        "georoam",
         function (params) {
           var pixelPoint = [params.offsetX, params.offsetY];
           var dataPoint = Map.convertFromPixel({ geoIndex: 0 }, pixelPoint);
-          this.$emit("click", Map);
+          this.$emit("scaleMove", Map);
         }.bind(this)
       );
     },
+  },
+  handlerMouseOver(Map) {
+    //地图点击事件
+    Map.on(
+      "mouseover",
+      function (params) {
+        var pixelPoint = [params.offsetX, params.offsetY];
+        var dataPoint = Map.convertFromPixel({ geoIndex: 0 }, pixelPoint);
+        this.$emit("mouseover", Map);
+      }.bind(this)
+    );
+  },
+  handleShowTip(Map) {
+    Map.dispatchAction({ type: "hideTip" });
+  },
+  handleHideTip(Map) {
+    Map.dispatchAction({ type: "hideTip" });
   },
   beforeCreate() {
     this.$emit("mapBeforeCreate", this.$echarts);
