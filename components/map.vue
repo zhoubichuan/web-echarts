@@ -1,6 +1,16 @@
 <template>
   <div class="wrap-map">
     <div ref="map" class="map"></div>
+    <div class="init">还原</div>
+    <template v-if="$slots.tipsbox">
+      <slot name="tipsbox"></slot>
+    </template>
+    <template v-if="$slots.legend">
+      <slot name="legend"></slot>
+    </template>
+    <template v-if="$slots.list">
+      <slot name="list"></slot>
+    </template>
     <!-- <div class="data-select">
       <input v-model="dataUrl" />
       <button @click="handlerChangeData">切换数据</button>
@@ -15,6 +25,10 @@ const labelRight = {
 export default {
   name: "WebMap",
   props: {
+    lightData: {
+      type: Array,
+      default: () => [],
+    },
     config: {
       type: Function,
     },
@@ -24,10 +38,6 @@ export default {
     },
     params: {
       type: Object,
-    },
-    styles: {
-      type: String,
-      default: "height: 100%;width:800px;",
     },
     title: {
       type: [Array, Object],
@@ -191,7 +201,7 @@ export default {
         function (params) {
           var pixelPoint = [params.offsetX, params.offsetY];
           var dataPoint = Map.convertFromPixel({ geoIndex: 0 }, pixelPoint);
-          this.$emit("click", Map);
+          this.$emit("mapClick", Map);
         }.bind(this)
       );
     },
@@ -202,7 +212,7 @@ export default {
         function (params) {
           var pixelPoint = [params.offsetX, params.offsetY];
           var dataPoint = Map.convertFromPixel({ geoIndex: 0 }, pixelPoint);
-          this.$emit("outSideClick", Map);
+          this.$emit("outSideMapClick", Map);
         }.bind(this)
       );
     },
@@ -236,7 +246,7 @@ export default {
         function (params) {
           var pixelPoint = [params.offsetX, params.offsetY];
           var dataPoint = Map.convertFromPixel({ geoIndex: 0 }, pixelPoint);
-          this.$emit("scaleMove", Map);
+          this.$emit("mapScaleMove", Map);
         }.bind(this)
       );
     },
@@ -248,7 +258,7 @@ export default {
       function (params) {
         var pixelPoint = [params.offsetX, params.offsetY];
         var dataPoint = Map.convertFromPixel({ geoIndex: 0 }, pixelPoint);
-        this.$emit("mouseover", Map);
+        this.$emit("mapMouseover", Map);
       }.bind(this)
     );
   },

@@ -37,11 +37,13 @@ export default {
     async getData(url) {
       let res = await this.$api.getMap(url);
       if (res.data) {
-        this.data = res.data.map((item) => ({
-          ...item,
-          filter: "1",
-          value: [item.latitude, item.longitude],
-        }));
+        this.data = Object.freeze(
+          res.data.map((item) => ({
+            ...item,
+            filter: "1",
+            value: [item.latitude, item.longitude],
+          }))
+        );
       }
     },
     mapCreated(echarts) {

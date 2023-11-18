@@ -4,12 +4,17 @@
     :data="targetData"
     @mapCreated="mapCreated"
     @changeData="getData"
+    @mapClick="mapClick"
+    @outSideMapClick="outSideMapClick"
+    @resize="resize"
+    @mapScaleMove="mapScaleMove"
+    @mapMouseover="mapMouseover"
   ></WebMap>
 </template>
 
 <script>
 import WebMap from "./map.vue";
-import { geoLayer, serierLayer } from "./mapTools.js";
+import { geoLayer, serierLayer, serierLayerConfig } from "./mapTools.js";
 export default {
   name: "WebMapConfig",
   component: {
@@ -45,6 +50,11 @@ export default {
     };
   },
   methods: {
+    mapMouseover(Map) {},
+    mapScaleMove(Map) {},
+    resize(Map) {},
+    outSideMapClick(Map) {},
+    mapClick(Map) {},
     mapCreated(echarts) {
       if (this.params.type === "china") {
         echarts.registerMap("china", this.$china3);
@@ -59,65 +69,7 @@ export default {
         series: [
           ...serierLayer.effectScatter(
             data,
-            [
-              {
-                type: "1",
-                backgroundColor: [
-                  ["#79d1b7", "#13a46d"],
-                  ["#fc755a", "#f5320b"],
-                ].map((c) => ({
-                  type: "linear",
-                  x: 0,
-                  y: 0,
-                  x2: 1,
-                  y2: 0,
-                  colorStops: [
-                    { offset: 0, color: c[0] },
-                    { offset: 1, color: c[1] },
-                  ],
-                })),
-                borderColor: ["#b4ebde", "#fbc3b6"],
-                boxShadow: ["0px 1px 4px #68bea0", "0px 1px 4px #8d9bd1"],
-              },
-              {
-                type: "2",
-                backgroundColor: [
-                  ["#fc9e32", "#ff8000"],
-                  ["#fc755a", "#f5320b"],
-                ].map((c) => ({
-                  type: "linear",
-                  x: 0,
-                  y: 0,
-                  x2: 1,
-                  y2: 0,
-                  colorStops: [
-                    { offset: 0, color: c[0] },
-                    { offset: 1, color: c[1] },
-                  ],
-                })),
-                borderColor: ["#feddb7", "#fbc3b6"],
-                boxShadow: ["0px 1px 4px #fc9e32", "0px 1px 4px #8d9bd1"],
-              },
-              {
-                type: "3",
-                backgroundColor: [
-                  ["#44abf9", "#4263e8"],
-                  ["#fc755a", "#f5320b"],
-                ].map((c) => ({
-                  type: "linear",
-                  x: 0,
-                  y: 0,
-                  x2: 1,
-                  y2: 0,
-                  colorStops: [
-                    { offset: 0, color: c[0] },
-                    { offset: 1, color: c[1] },
-                  ],
-                })),
-                borderColor: ["#aad1ff", "#fbc3b6"],
-                boxShadow: ["0px 1px 4px #7998d6", "0px 1px 4px #8d9bd1"],
-              },
-            ],
+            serierLayerConfig.effectScatter,
             this.params
           ),
         ],

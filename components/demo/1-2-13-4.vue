@@ -1,5 +1,11 @@
 <template>
-  <WebMap @mapMounted="mapMounted" :config="getOptions" :data="data"></WebMap>
+  <WebMap
+    :config="getOptions"
+    :data="data"
+    @mapCreated="mapCreated"
+    @mapMounted="mapMounted"
+    @changeData="getData"
+  ></WebMap>
 </template>
 
 <script>
@@ -10,12 +16,16 @@ export default {
     };
   },
   async mounted() {
-    // let res = await this.$api.getMap(2);
-    // if (res.data) {
-    //   this.data = res.data.map((item) => ({ ...item, value: item.descript }));
-    // }
+    let res = await this.$api.getMap(2);
+    if (res.data) {
+      this.data = res.data.map((item) => ({ ...item, value: item.descript }));
+    }
   },
   methods: {
+    async getData(url) {},
+    mapCreated(echarts) {
+      echarts.registerMap("china", this.$china1);
+    },
     mapMounted(Map) {
       Map.on("georoam", function (params) {
         var option = Map.getOption();
@@ -32,7 +42,7 @@ export default {
       var yData = [];
       var barData = [];
 
-      for (var i = 0; i < 10; i++) {
+      for (var i = 0; i < data.length; i++) {
         barData.push(data[i]);
         yData.push(i + data[i].name);
       }
@@ -189,7 +199,6 @@ export default {
                     { offset: 0, color: "rgba(66,99,232,1)" },
                     { offset: 1, color: "rgba(55,183,249,1)" },
                   ],
-                  
                 },
               },
             },

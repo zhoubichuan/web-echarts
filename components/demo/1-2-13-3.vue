@@ -5,6 +5,7 @@
     @mapCreated="mapCreated"
     @changeData="getData"
     @mapMounted="mapMounted"
+    @click="getCurrentLocal"
   ></WebMap>
 </template>
 
@@ -17,7 +18,7 @@ export default {
     };
   },
   async created() {
-    // this.getCurrentLocal();
+    this.getCurrentLocal();
     this.getData(1);
   },
   methods: {
@@ -118,7 +119,7 @@ export default {
             ...{
               // 普通样式
               label: {
-                show: false,
+                show: true,
                 color: "rgba(130,143,200,1)",
               },
               itemStyle: {
