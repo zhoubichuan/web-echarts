@@ -3,6 +3,7 @@
     :config="getOptions"
     :data="targetData"
     @mapCreated="mapCreated"
+    @mapBeforeMount="beforeHandle"
     @changeData="getData"
     @mapClick="mapClick"
     @outSideMapClick="outSideMapClick"
@@ -56,11 +57,15 @@ export default {
     outSideMapClick(Map) {},
     mapClick(Map) {},
     mapCreated(echarts) {
+      if (this.params.registerName) return;
       if (this.params.type === "china") {
         echarts.registerMap("china", this.$china3);
       } else {
         echarts.registerMap("world", this.$world2);
       }
+    },
+    beforeHandle(echarts) {
+      this.$emit("mapBeforeMount", echarts);
     },
     getOptions(data) {
       return {

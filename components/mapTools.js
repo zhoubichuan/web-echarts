@@ -32,7 +32,7 @@ export let geoLayer = (data, params = { type: "world" }, config = [{}]) => {
       left: "5%",
       bottom: "5%",
       roam: true,
-      map: "world",
+      map: params.registerName || "world",
       zoom: 1,
       scaleLimit: {
         min: 1,
@@ -134,12 +134,12 @@ export let geoLayer = (data, params = { type: "world" }, config = [{}]) => {
     };
     let layer = config.map((item) => ({
       roam: true,
-      map: "china",
+      map: params.registerName || "china",
       zoom: 1.14,
       top: "10%",
-      right: "16%",
-      left: "16%",
-      bottom: "10%",
+      right: "18%",
+      left: "18%",
+      bottom: "5%",
       scaleLimit: {
         min: 1,
         max: 80,

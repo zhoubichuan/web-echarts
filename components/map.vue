@@ -32,6 +32,10 @@ export default {
     config: {
       type: Function,
     },
+    styles: {
+      type: String,
+      default: "height: 100%;width:100%;",
+    },
     data: {
       type: [Array, Object],
       default: () => [],

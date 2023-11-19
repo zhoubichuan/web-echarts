@@ -2,7 +2,7 @@
     <WebMap
       :config="getOptions"
       :data="data"
-      @mapBeforeMount="beforeHandle"
+      @mapBeforeMount="mapBeforeMount"
       @changeData="getData"
     ></WebMap>
   </template>
@@ -23,7 +23,7 @@
           this.data = res.data.map((item) => ({ ...item, value: item.descript }));
         }
       },
-      beforeHandle(echarts) {
+      mapBeforeMount(echarts) {
         echarts.registerMap("svgmap", this.$zhongguosvg2);
       },
       getOptions(data, Map) {

@@ -32,20 +32,20 @@ export default {
           x: "right",
           data: ["准时", "迟到", "请假", "未到"],
           formatter: function (name) {
-            var oa = option.series[0].data;
-            var num = oa[0].value + oa[1].value + oa[2].value + oa[3].value;
-            for (var i = 0; i < option.series[0].data.length; i++) {
-              if (name == oa[i].name) {
-                return (
-                  name +
-                  "     " +
-                  oa[i].value +
-                  "     " +
-                  ((oa[i].value / num) * 100).toFixed(2) +
-                  "%"
-                );
-              }
-            }
+            // var oa = option.series[0].data;
+            // var num = oa[0].value + oa[1].value + oa[2].value + oa[3].value;
+            // for (var i = 0; i < option.series[0].data.length; i++) {
+            //   if (name == oa[i].name) {
+            //     return (
+            //       name +
+            //       "     " +
+            //       oa[i].value +
+            //       "     " +
+            //       ((oa[i].value / num) * 100).toFixed(2) +
+            //       "%"
+            //     );
+            //   }
+            // }
           },
         },
         series: [

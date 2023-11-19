@@ -10,9 +10,10 @@ export default {
     };
   },
   async created() {
-    let res = await this.$api.getScatter(2);
+    let res = await this.$api.getBar(1);
     if (res.data) {
-      this.data = res.data.map((item) => ({ ...item, value: item.descript }));
+      let data = res.data.map((item) => ({ ...item, value: item.descript }))
+      this.data = [data,data];
     }
   },
   methods: {

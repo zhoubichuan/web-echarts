@@ -4,7 +4,6 @@
 </template>
 
 <script>
-import _ from 'lodash'
 let data = {
   female: {
     name: "女性",
@@ -83,9 +82,9 @@ let data = {
 };
 let yAxisData = new Set();
 let legendData = [];
-data.forEach((d) => {
-  legendData.push(d.name);
-  d.data.forEach((item) => {
+Object.keys(data).forEach((d) => {
+  legendData.push(data[d].name);
+  data[d].data.forEach((item) => {
     yAxisData.add(item.label);
   });
 });
@@ -236,7 +235,7 @@ export default {
         })),
         series: [
           {
-            name: _.get(data, "male.name"),
+            name: data.item.male.name,
             label: {
               position: "left",
             },
@@ -244,12 +243,12 @@ export default {
               color: "#01C5B2",
               barBorderRadius: [4, 0, 0, 4],
             },
-            data: _.map(_.get(data, "male.data"), (d) => d.value),
+            data: data.male.data,
           },
           {
             xAxisIndex: 2,
             yAxisIndex: 2,
-            name: _.get(data, "female.name"),
+            name: data.female.name,
             label: {
               position: "right",
             },
@@ -257,20 +256,19 @@ export default {
               color: "#FB6F6C",
               barBorderRadius: [0, 4, 4, 0],
             },
-            data: _.map(_.get(data, "female.data"), (d) => d.value),
+            data: data.female.data,
           },
-        ].map((item) =>
-          _.merge(item, {
-            type: "bar",
-            barWidth: 11,
-            label: {
-              show: true,
-              fontFamily: "Rubik-Medium",
-              fontSize: 14,
-              distance: 10,
-            },
-          })
-        ),
+        ].map((item) => ({
+          ...item,
+          type: "bar",
+          barWidth: 11,
+          label: {
+            show: true,
+            fontFamily: "Rubik-Medium",
+            fontSize: 14,
+            distance: 10,
+          },
+        })),
       },
     };
   },
