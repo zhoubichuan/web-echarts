@@ -5,6 +5,7 @@
 <script>
 import colors from "./color";
 export default {
+  name: "WebPieConfig",
   data() {
     return {
       data: [],

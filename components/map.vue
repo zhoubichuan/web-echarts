@@ -283,6 +283,7 @@ export default {
         this.option.geo[0].nameMap = require("./nameMap").default;
       } else {
         this.$echarts.registerMap("china", this.$china);
+        this.option.geo[0].nameMap = require("./nameMap2").default;
       }
     } else {
       if (this.option.geo.map === "world") {
@@ -290,6 +291,7 @@ export default {
         this.option.geo.nameMap = require("./nameMap").default;
       } else {
         this.$echarts.registerMap("china", this.$china);
+        this.option.geo.nameMap = require("./nameMap2").default;
       }
     }
     this.$emit("mapCreated", this.$echarts);

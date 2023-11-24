@@ -51,6 +51,7 @@ export default {
     };
   },
   methods: {
+    getData() {},
     mapMouseover(Map) {},
     mapScaleMove(Map) {},
     resize(Map) {},

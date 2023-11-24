@@ -8,6 +8,7 @@ export default {
     return {
       data: [],
       params: {
+        themes: 3,
         type: "china",
         options: {
           title: {

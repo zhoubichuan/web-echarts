@@ -1,3 +1,58 @@
+const isEmpty = false
+export const themes = [{
+  color: `rgba(191,176,154,${isEmpty ? 0.7 : 1})`,
+  areaColor: `rgba(246,239,228,${isEmpty ? 0.7 : 1})`,
+  borderColor: `rgba(229,213,205,${isEmpty ? 0.7 : 1})`,
+},
+{
+  color: `rgba(137,150,204,${isEmpty ? 0.7 : 1})`,
+  areaColor: `rgba(229,236,249,${isEmpty ? 0.7 : 1})`,
+  borderColor: `rgba(196,207,254,${isEmpty ? 0.7 : 1})`,
+},
+{
+  color: `rgba(200,150,150,${isEmpty ? 0.7 : 1})`,
+  areaColor: `rgba(249,231,231,${isEmpty ? 0.7 : 1})`,
+  borderColor: `rgba(222,180,180,${isEmpty ? 0.7 : 1})`,
+},
+{
+  color: `rgba(154,172,160,${isEmpty ? 0.7 : 1})`,
+  areaColor: `rgba(228,241,232,${isEmpty ? 0.7 : 1})`,
+  borderColor: `rgba(193,220,202,${isEmpty ? 0.7 : 1})`,
+}, {
+  color: `rgba(135,169,209,${isEmpty ? 0.7 : 1})`,
+  areaColor: `rgba(211,230,252,${isEmpty ? 0.7 : 1})`,
+  borderColor: `rgba(196,207,254,${isEmpty ? 0.7 : 1})`,
+}, {
+  borderColor: `rgba(196,207,254,${isEmpty ? 0.7 : 1})`,
+  areaColor: `rgba(229,236,249,${isEmpty ? 0.7 : 1})`,
+  color: `rgba(130,143,200,${isEmpty ? 0.7 : 1})`,
+}].map(({ color, areaColor, borderColor }) => ({
+  // 普通样式
+  label: {
+    show: true,
+    color,
+  },
+  itemStyle: {
+    show: true,
+    borderWidth: 1,
+    borderColor,
+    areaColor,
+  },
+  emphasis: {
+    // hover样式
+    label: {
+      show: true,
+      color,
+    },
+    itemStyle: {
+      borderColor,
+      borderWidth: 1,
+      areaColor,
+    },
+  },
+}))
+
+
 export let geoLayer = (data, params = { type: "world" }, config = [{}]) => {
   if (params.type === "world") {
     let regions = {
@@ -31,38 +86,16 @@ export let geoLayer = (data, params = { type: "world" }, config = [{}]) => {
       right: "5%",
       left: "5%",
       bottom: "5%",
+      silent: true,
       roam: true,
       map: params.registerName || "world",
       zoom: 1,
+      nameMap: require("./nameMap").default,
       scaleLimit: {
         min: 1,
         max: 20,
       },
-      ...{
-        // 普通样式
-        label: {
-          show: true,
-          color: "rgba(130,143,200,1)",
-        },
-        itemStyle: {
-          show: true,
-          borderWidth: 1,
-          borderColor: "rgba(196,207,254,1)",
-          areaColor: "rgba(229,236,249,1)",
-        },
-      },
-      emphasis: {
-        // hover样式
-        label: {
-          show: true,
-          color: "rgba(130,143,200,1)",
-        },
-        itemStyle: {
-          borderColor: "rgba(196,207,254,1)",
-          borderWidth: 1,
-          areaColor: "rgba(229,236,249,1)",
-        },
-      },
+      ...themes[params.themes || 0],
       ...{
         // 选中样式
         selectedMode: "single",
@@ -92,31 +125,7 @@ export let geoLayer = (data, params = { type: "world" }, config = [{}]) => {
     let regions = {
       sea: {
         name: "南海诸岛",
-        ...{
-          // 普通样式
-          label: {
-            show: true,
-            color: "rgba(130,143,200,1)",
-          },
-          itemStyle: {
-            show: true,
-            borderWidth: 1,
-            borderColor: "rgba(196,207,254,1)",
-            areaColor: "rgba(229,236,249,1)",
-          },
-        },
-        emphasis: {
-          // hover样式
-          label: {
-            show: true,
-            color: "rgba(130,143,200,1)",
-          },
-          itemStyle: {
-            borderColor: "rgba(196,207,254,1)",
-            borderWidth: 1,
-            areaColor: "rgba(229,236,249,1)",
-          },
-        },
+        ...themes[params.themes || 0],
       },
       shadowMap: {
         name: "country",
@@ -136,39 +145,17 @@ export let geoLayer = (data, params = { type: "world" }, config = [{}]) => {
       roam: true,
       map: params.registerName || "china",
       zoom: 1.14,
+      silent: true,
       top: "10%",
       right: "18%",
       left: "18%",
       bottom: "5%",
+      nameMap: require("./nameMap2").default,
       scaleLimit: {
         min: 1,
         max: 80,
       },
-      ...{
-        // 普通样式
-        label: {
-          show: true,
-          color: "rgba(130,143,200,1)",
-        },
-        itemStyle: {
-          show: true,
-          borderWidth: 1,
-          borderColor: "rgba(196,207,254,1)",
-          areaColor: "rgba(229,236,249,1)",
-        },
-      },
-      emphasis: {
-        // hover样式
-        label: {
-          show: true,
-          color: "rgba(130,143,200,1)",
-        },
-        itemStyle: {
-          borderColor: "rgba(196,207,254,1)",
-          borderWidth: 1,
-          areaColor: "rgba(229,236,249,1)",
-        },
-      },
+      ...themes[params.themes || 0],
       ...{
         // 选中样式
         selectedMode: "single",

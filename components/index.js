@@ -13,6 +13,7 @@ import sunburst from "./sunburst";
 import graph from "./graph";
 import line from "./line";
 import pie from "./pie";
+import pieConfig from "./pieConfig";
 import pie3d from "./pie3d";
 import scatter from "./scatter";
 import tree from "./tree";
@@ -36,6 +37,7 @@ let components = {
   graph,
   line,
   pie,
+  pieConfig,
   pie3d,
   scatter,
   tree,

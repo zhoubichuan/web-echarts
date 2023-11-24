@@ -8,6 +8,7 @@ export default {
     return {
       data: [],
       params: {
+        themes: 2,
         type: "world",
         options: {
           title: {
