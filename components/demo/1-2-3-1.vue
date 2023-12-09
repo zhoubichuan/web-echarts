@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import colors from "./color";
+import colors from "../color";
 export default {
   data() {
     return {
