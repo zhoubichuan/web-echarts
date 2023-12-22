@@ -193,11 +193,11 @@ export let serierLayer = {
         return [12, 6];
       },
       showEffectOn: "emphasis",
-      zlevel: 2,
       rippleEffect: {
-        period: 2.5, //波纹秒数
+        period: 1.5, //波纹秒数
+        color: 'rgba(245,50,11,1)',
         brushType: "stroke", //stroke(涟漪)和fill(扩散)，两种效果
-        scale: 6, //波纹范围
+        scale: 3, //波纹范围
       },
       hoverAnimation: true,
       ...{
@@ -255,15 +255,15 @@ export let serierLayer = {
                   borderType: "solid",
                   borderColor: item.borderColor[1],
                   boxShadow: item.boxShadow[1],
-                  fontSize: 16, //字体大小
-                  padding: [4, 6, 4, 6],
+                  fontSize: 18, //字体大小
+                  padding: [6, 8, 6, 8],
                 },
               },
             },
           },
         },
         itemStyle: {
-          color: "none", //字体和点颜色
+          color: 'rgba(245,50,11,1)', //字体和点颜色
         },
       },
       ...{
@@ -291,8 +291,8 @@ export let serierLayer = {
                     borderType: "solid",
                     borderColor: item.borderColor[1],
                     boxShadow: item.boxShadow[1],
-                    fontSize: 16, //字体大小
-                    padding: [4, 6, 4, 6],
+                    fontSize: 18, //字体大小
+                    padding: [6, 8, 6, 8],
                   },
                 },
               },

@@ -42,9 +42,6 @@ export default {
         );
       }
     },
-    mapCreated(echarts) {
-      echarts.registerMap("china", this.$china3);
-    },
   },
 };
 </script>

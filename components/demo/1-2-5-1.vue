@@ -10,7 +10,7 @@ export default {
     };
   },
   async created() {
-    let res = await this.$api.getBar(1);
+    let res = await this.$api.getEffectScatter(1);
     if (res.data) {
       this.data = res.data.map((item) => ({ ...item, value: item.descript }));
     }
@@ -26,30 +26,166 @@ export default {
           {
             name: "1990",
             type: "effectScatter",
-            data: [
-              [28604, 77, 17096869, "Australia", 1990],
-              [31163, 77.4, 27662440, "Canada", 1990],
-              [1516, 68, 1154605773, "China", 1990],
-              [13670, 74.7, 10582082, "Cuba", 1990],
-              [28599, 75, 4986705, "Finland", 1990],
-              [29476, 77.1, 56943299, "France", 1990],
-              [31476, 75.4, 78958237, "Germany", 1990],
-              [28666, 78.1, 254830, "Iceland", 1990],
-              [1777, 57.7, 870601776, "India", 1990],
-              [29550, 79.1, 122249285, "Japan", 1990],
-              [2076, 67.9, 20194354, "North Korea", 1990],
-              [12087, 72, 42972254, "South Korea", 1990],
-              [24021, 75.4, 3397534, "New Zealand", 1990],
-              [43296, 76.8, 4240375, "Norway", 1990],
-              [10088, 70.8, 38195258, "Poland", 1990],
-              [19349, 69.6, 147568552, "Russia", 1990],
-              [10670, 67.3, 53994605, "Turkey", 1990],
-              [26424, 75.7, 57110117, "United Kingdom", 1990],
-              [37062, 75.4, 252847810, "United States", 1990],
-            ],
-            symbolSize: function (data) {
-              return Math.sqrt(data[2]) / 5e2;
+            showEffectOn: "emphasis",
+            rippleEffect: {
+              period: 1.5, //波纹秒数
+              color: "rgba(245,50,11,1)",
+              brushType: "stroke", //stroke(涟漪)和fill(扩散)，两种效果
+              scale: 3, //波纹范围
             },
+            hoverAnimation: true,
+            ...{
+              // 普通样式
+              label: {
+                show: true,
+                distance: 18,
+                position: "top",
+                formatter: function ({ data }) {
+                  if (data.time) {
+                    return "{text|" + data.name + "|" + data.time + "}";
+                  } else {
+                    return "{text|" + data.name + "}";
+                  }
+                },
+                textStyle: {
+                  rich: {
+                    text: {
+                      color: "#fff",
+                      backgroundColor: [
+                        ["#79d1b7", "#13a46d"],
+                        ["#fc755a", "#f5320b"],
+                      ].map((c) => ({
+                        type: "linear",
+                        x: 0,
+                        y: 0,
+                        x2: 1,
+                        y2: 0,
+                        colorStops: [
+                          { offset: 0, color: c[0] },
+                          { offset: 1, color: c[1] },
+                        ],
+                      }))[0],
+                      borderWidth: 1,
+                      borderType: "solid",
+                      borderColor: ["#b4ebde", "#fbc3b6"][0],
+                      boxShadow: [
+                        "0px 1px 4px #68bea0",
+                        "0px 1px 4px #8d9bd1",
+                      ][0],
+                      fontSize: 18, //字体大小
+                      padding: [6, 8, 6, 8],
+                    },
+                  },
+                },
+              },
+              itemStyle: {
+                color: "rgba(245,50,11,0.5)", //字体和点颜色
+              },
+            },
+            emphasis: {
+              // hover样式
+              label: {
+                show: true,
+                distance: 18,
+                position: "top",
+                formatter: function ({ data }) {
+                  if (data.time) {
+                    return "{text|" + data.name + "|" + data.time + "}";
+                  } else {
+                    return "{text|" + data.name + "}";
+                  }
+                },
+                textStyle: {
+                  rich: {
+                    rich: {
+                      text: {
+                        color: "#fff",
+                        backgroundColor: [
+                          ["#79d1b7", "#13a46d"],
+                          ["#fc755a", "#f5320b"],
+                        ].map((c) => ({
+                          type: "linear",
+                          x: 0,
+                          y: 0,
+                          x2: 1,
+                          y2: 0,
+                          colorStops: [
+                            { offset: 0, color: c[0] },
+                            { offset: 1, color: c[1] },
+                          ],
+                        }))[1],
+                        borderWidth: 1,
+                        borderType: "solid",
+                        borderColor: ["#b4ebde", "#fbc3b6"][1],
+                        boxShadow: [
+                          "0px 1px 4px #68bea0",
+                          "0px 1px 4px #8d9bd1",
+                        ][1],
+                        fontSize: 18, //字体大小
+                        padding: [6, 8, 6, 8],
+                      },
+                    },
+                  },
+                },
+              },
+              itemStyle: {
+                color: "rgba(245,50,11,0.8)", //字体和点颜色
+              },
+            },
+            ...{
+              // 选中样式
+              selectedMode: "single",
+              select: {
+                label: {
+                  show: true,
+                  distance: 18,
+                  position: "top",
+                  formatter: function ({ data }) {
+                    if (data.time) {
+                      return "{text|" + data.name + "|" + data.time + "}";
+                    } else {
+                      return "{text|" + data.name + "}";
+                    }
+                  },
+                  textStyle: {
+                    rich: {
+                      rich: {
+                        text: {
+                          color: "#fff",
+                          backgroundColor: [
+                            ["#79d1b7", "#13a46d"],
+                            ["#fc755a", "#f5320b"],
+                          ].map((c) => ({
+                            type: "linear",
+                            x: 0,
+                            y: 0,
+                            x2: 1,
+                            y2: 0,
+                            colorStops: [
+                              { offset: 0, color: c[0] },
+                              { offset: 1, color: c[1] },
+                            ],
+                          }))[1],
+                          borderWidth: 1,
+                          borderType: "solid",
+                          borderColor: ["#b4ebde", "#fbc3b6"][1],
+                          boxShadow: [
+                            "0px 1px 4px #68bea0",
+                            "0px 1px 4px #8d9bd1",
+                          ][1],
+                          fontSize: 18, //字体大小
+                          padding: [6, 8, 6, 8],
+                        },
+                      },
+                    },
+                  },
+                },
+                itemStyle: {
+                  color: "rgba(245,50,11,1)", //字体和点颜色
+                },
+              },
+            },
+            data,
           },
         ],
       };
