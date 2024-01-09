@@ -22,7 +22,7 @@ export * from "./systemTag";
 export * from "./boxplot";
 function ip(params) {
   return request({
-    url: "https://zhoubichuan.com/antdpro-express/api/rule7",
+    url: "/antdpro-express/api/rule7",
     method: "post",
     params,
   });
