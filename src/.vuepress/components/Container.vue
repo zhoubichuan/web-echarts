@@ -9,7 +9,7 @@
         <slot>
           <iframe
             ref="iframe"
-            :src="url"
+            :src="getUrl"
             width="100%"
             height="100%"
             frameborder="no"
@@ -39,6 +39,14 @@ export default {
       pageIndex: 0,
       show: false,
     };
+  },
+  computed: {
+    getUrl() {
+      if (location.href.includes("localhost:3009")) {
+        return "http://localhost" + this.url;
+      }
+      return url;
+    },
   },
   methods: {
     handleClick() {
