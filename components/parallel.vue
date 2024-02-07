@@ -197,18 +197,17 @@ export default {
     if (!this.config) {
       this.charts.setOption(this.option);
     }
-  },
-  watch: {
-    data: {
-      handler(val) {
-        let { title, ...option } = this.config(val);
+    this.$watch(
+      "data",
+      (newVal, oldVal) => {
+        let { title, ...option } = this.config(newVal);
         this.charts.setOption({
           title: title ? this.titleTransform(title) : [],
           ...option,
         });
       },
-      deep: true,
-    },
+      { deep: true, immediate: true }
+    );
   },
 };
 </script>

@@ -24,8 +24,8 @@ export default {
             x2: 0,
             y2: 1,
             colorStops: [
-              { offset: 0, color: colors[index % 4].color[0] },
-              { offset: 1, color: colors[index % 4].color[1] },
+              { offset: 0, color: colors[index%4].color[0] },
+              { offset: 1, color: colors[index%4].color[1] },
             ],
           },
         },
@@ -43,22 +43,25 @@ export default {
           orient: "vertical",
           right: "10%",
           top: "40%",
-          // data: data.map((i) => i.name),
+          data: data.map((i) => i.name),
         },
         series: [
+          {
+            name: "背景图",
+            type: "pie",
+            radius: ["25%", "68%"],
+            color: "#d9e1f5",
+            silent: true,
+         
+            itemStyle: {
+            
+            },
+            data: [{ value: 0, label: { show: false } }],
+          },
           {
             name: "数据图",
             type: "pie",
             radius: ["25%", "58%"],
-            percentPrecision: 1,
-            showEmptyCircle: true,
-            emptyCircleStyle: {
-              color: "#d9e1f5",
-              shadowOffsetX: -2,
-              shadowOffsetY: -2,
-              shadowBlur: 6,
-              shadowColor: "rgba(0,0,0,0.16)",
-            },
             label: {
               position: "inner",
               formatter: "{d}%",
