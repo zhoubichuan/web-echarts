@@ -19,11 +19,12 @@ export default {
     getOptions(data) {
       return {
         title: {
-          text: "Michelson-Morley Experiment",
+          text: "盒须图",
+          subtext: "时间/详情",
         },
         dataset: [
           {
-            source: data,
+            source: data.map(i=>i.value),
           },
           {
             transform: {

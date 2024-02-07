@@ -22,7 +22,7 @@ export default {
     getOptions(data) {
       return {
         title: {
-          text: "json地图",
+          text: "中国地图",
           subtext: "单位：元",
         },
         geo: {
@@ -76,7 +76,6 @@ export default {
                     { offset: 0, color: "rgba(66,99,232,1)" },
                     { offset: 1, color: "rgba(55,183,249,1)" },
                   ],
-                  
                 },
               },
             },

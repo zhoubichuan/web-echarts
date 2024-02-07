@@ -229,7 +229,7 @@ export let serierLayer = {
           },
         },
         itemStyle: {
-          color: "transparent", //字体和点颜色
+          color: "#FF8C69", //字体和点颜色
         },
       },
       emphasis: {
@@ -286,11 +286,11 @@ export let serierLayer = {
                 rich: {
                   text: {
                     color: "#fff",
-                    backgroundColor: item.backgroundColor[1],
+                    backgroundColor: item.backgroundColor[2],
                     borderWidth: 1,
                     borderType: "solid",
-                    borderColor: item.borderColor[1],
-                    boxShadow: item.boxShadow[1],
+                    borderColor: item.borderColor[2],
+                    boxShadow: item.boxShadow[2],
                     fontSize: 18, //字体大小
                     padding: [6, 8, 6, 8],
                   },
@@ -299,7 +299,7 @@ export let serierLayer = {
             },
           },
           itemStyle: {
-            color: "blue", //字体和点颜色
+            color: "#FF0000", //字体和点颜色
           },
         },
       },
@@ -326,8 +326,8 @@ export let serierLayerConfig = {
           { offset: 1, color: c[1] },
         ],
       })),
-      borderColor: ["#b4ebde", "#fbc3b6"],
-      boxShadow: ["0px 1px 4px #68bea0", "0px 1px 4px #8d9bd1"],
+      borderColor: ["#b4ebde", "#fbc3b6", "#FFAEB9"],
+      boxShadow: ["0px 1px 4px #68bea0", "0px 1px 4px #8d9bd1", "0px 1px 4px #FF6347"],
     },
     {
       type: "2",
@@ -345,8 +345,8 @@ export let serierLayerConfig = {
           { offset: 1, color: c[1] },
         ],
       })),
-      borderColor: ["#feddb7", "#fbc3b6"],
-      boxShadow: ["0px 1px 4px #fc9e32", "0px 1px 4px #8d9bd1"],
+      borderColor: ["#feddb7", "#fbc3b6", "#FFAEB9"],
+      boxShadow: ["0px 1px 4px #fc9e32", "0px 1px 4px #8d9bd1", "0px 1px 4px #FF6347"],
     },
     {
       type: "3",
@@ -364,8 +364,8 @@ export let serierLayerConfig = {
           { offset: 1, color: c[1] },
         ],
       })),
-      borderColor: ["#aad1ff", "#fbc3b6"],
-      boxShadow: ["0px 1px 4px #7998d6", "0px 1px 4px #8d9bd1"],
+      borderColor: ["#aad1ff", "#fbc3b6", "#FFAEB9"],
+      boxShadow: ["0px 1px 4px #7998d6", "0px 1px 4px #8d9bd1", "0px 1px 4px #FF6347"],
     },
   ],
 };
