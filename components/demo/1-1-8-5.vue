@@ -1,9 +1,6 @@
 <template>
-  <WebMapConfig
-    :data="data"
-    :params="params"
-    @mapBeforeMount="mapBeforeMount"
-  ></WebMapConfig>
+  <WebMapConfig :data="data" :params="params" @mapBeforeMount="mapBeforeMount">
+  </WebMapConfig>
 </template>
 
 <script>
