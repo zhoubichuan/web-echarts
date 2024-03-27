@@ -121,58 +121,58 @@ const sidebar = {
     '/senior/vue3/': [
         '1.index',
     ],
-    // '/source/vue-cli2.x/': [
-    //     '1.index'
-    // ],
-    // '/source/vue2.x/': [
-    //     '1.index',
-    //     '2.initGlobalAPI',
-    //     '3.initMixin',
-    //     '4.stateMixin',
-    //     '5.eventsMixin',
-    //     '6.lifecycleMixin',
-    //     '7.renderMixin',
-    //     '8.mount',
-    //     '9.ast',
-    //     '10.optimize',
-    //     '11.gencode',
-    //     '12.mount',
-    //     '13._render',
-    //     '14._update'
-    // ],
-    // '/source/vue-router3.x/': [
-    //     '1.index',
-    //     '2.origin'
-    // ],
-    // '/source/vuex3.x/': [
-    //     '1.index',
-    //     '2.use',
-    //     '3.origin'
-    // ],
-    // '/source/vue-cli3.x/': [
-    //     '1.index',
-    // ],
-    // '/source/vue3.x/': [
-    //     '1.index',
-    //     '2.initGlobalAPI',
-    //     '3.initMixin',
-    //     '4.stateMixin',
-    //     '5.eventsMixin',
-    //     '6.lifecycleMixin',
-    //     '7.renderMixin',
-    //     '8.mount',
-    //     '9.ast',
-    //     '10.optimize',
-    //     '11.gencode',
-    //     '12.mount',
-    //     '13._render',
-    //     '14._update'
-    // ],
-    // '/source/vue-router4.x/': [
-    //     '1.index'
-    // ],
-    // '/source/vuex4.x/': [
-    //     '1.index'
-    // ]
+    '/source/vue-cli2.x/': [
+        '1.index'
+    ],
+    '/source/vue2.x/': [
+        '1.index',
+        '2.initGlobalAPI',
+        '3.initMixin',
+        '4.stateMixin',
+        '5.eventsMixin',
+        '6.lifecycleMixin',
+        '7.renderMixin',
+        '8.mount',
+        '9.ast',
+        '10.optimize',
+        '11.gencode',
+        '12.mount',
+        '13._render',
+        '14._update'
+    ],
+    '/source/vue-router3.x/': [
+        '1.index',
+        '2.origin'
+    ],
+    '/source/vuex3.x/': [
+        '1.index',
+        '2.use',
+        '3.origin'
+    ],
+    '/source/vue-cli3.x/': [
+        '1.index',
+    ],
+    '/source/vue3.x/': [
+        '1.index',
+        '2.initGlobalAPI',
+        '3.initMixin',
+        '4.stateMixin',
+        '5.eventsMixin',
+        '6.lifecycleMixin',
+        '7.renderMixin',
+        '8.mount',
+        '9.ast',
+        '10.optimize',
+        '11.gencode',
+        '12.mount',
+        '13._render',
+        '14._update'
+    ],
+    '/source/vue-router4.x/': [
+        '1.index'
+    ],
+    '/source/vuex4.x/': [
+        '1.index'
+    ]
 }
 module.exports = sidebar

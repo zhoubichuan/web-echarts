@@ -42,47 +42,47 @@ const nav = [
       },
     ],
   },
-  //   {
-  //     text: "Vue 2.x源码",
-  //     items: [
-  //       {
-  //         text: "一.Vue/cli2.x",
-  //         link: "/source/vue-cli2.x/1.index",
-  //       },
-  //       {
-  //         text: "二.Vue 2.x",
-  //         link: "/source/vue2.x/1.index",
-  //       },
-  //       {
-  //         text: "三.Vue-Router3.x",
-  //         link: "/source/vue-router3.x/1.index",
-  //       },
-  //       {
-  //         text: "四.Vuex3.x",
-  //         link: "/source/vuex3.x/1.index",
-  //       },
-  //     ],
-  //   },
-  //   {
-  //     text: "Vue 3.x源码",
-  //     items: [
-  //       {
-  //         text: "一.Vue/cli3.x",
-  //         link: "/source/vue-cli3.x/1.index",
-  //       },
-  //       {
-  //         text: "二.Vue 3.x",
-  //         link: "/source/vue3.x/1.index",
-  //       },
-  //       {
-  //         text: "三.Vue-Router4.x",
-  //         link: "/source/vue-router4.x/1.index",
-  //       },
-  //       {
-  //         text: "四.Vuex4.x",
-  //         link: "/source/vuex4.x/1.index",
-  //       },
-  //     ],
-  //   },
+    {
+      text: "zrender",
+      items: [
+        {
+          text: "一.Vue/cli2.x",
+          link: "/source/vue-cli2.x/1.index",
+        },
+        {
+          text: "二.Vue 2.x",
+          link: "/source/vue2.x/1.index",
+        },
+        {
+          text: "三.Vue-Router3.x",
+          link: "/source/vue-router3.x/1.index",
+        },
+        {
+          text: "四.Vuex3.x",
+          link: "/source/vuex3.x/1.index",
+        },
+      ],
+    },
+    {
+      text: "Echarts高级",
+      items: [
+        {
+          text: "一.Vue/cli3.x",
+          link: "/source/vue-cli3.x/1.index",
+        },
+        {
+          text: "二.Vue 3.x",
+          link: "/source/vue3.x/1.index",
+        },
+        {
+          text: "三.Vue-Router4.x",
+          link: "/source/vue-router4.x/1.index",
+        },
+        {
+          text: "四.Vuex4.x",
+          link: "/source/vuex4.x/1.index",
+        },
+      ],
+    },
 ];
 module.exports = nav;

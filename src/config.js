@@ -3,6 +3,7 @@ import * as _ from 'lodash'
 import axios from 'axios'
 import service from '@/util/request.js'
 import * as echarts from 'echarts'
+import * as zrender from 'zrender'
 import * as china from './static/json/china.json'
 import * as china2 from './static/json/china2.json'
 import * as china3 from './static/json/china3.json'
@@ -17,6 +18,7 @@ import zhongguosvg2 from './static/zhongguosvg2'
 export default {
   install (Vue) {
     Vue.prototype.$echarts = echarts
+    Vue.prototype.$zrender = zrender
     Vue.prototype.$china = china.default
     Vue.prototype.$china2 = china2.default
     Vue.prototype.$china3 = china3.default
