@@ -21,13 +21,12 @@ export default {
     getOptions(data) {
       return {
         title: {
-          text: "多个xAxis + 多个yAxis + 多个折线图",
+          text: "曲面",
           subtext: "单位：时",
         },
-        tooltip: {},
         backgroundColor: "#fff",
         visualMap: {
-          show: false,
+          show: true,
           dimension: 2,
           min: -1,
           max: 1,
@@ -60,7 +59,7 @@ export default {
         },
         grid3D: {
           viewControl: {
-            // projection: 'orthographic'
+            projection: 'orthographic'
           },
           boxHeight: 40,
         },
@@ -68,7 +67,7 @@ export default {
           {
             type: "surface",
             wireframe: {
-              show: false,
+              show: true,
             },
             shading: "color",
             equation: {

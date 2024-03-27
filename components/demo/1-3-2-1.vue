@@ -6,7 +6,14 @@
 export default {
   data() {
     return {
-      data: [
+      data: [],
+    };
+  },
+  async created() {
+    let res = await this.$api.getPie(1);
+    if (res.data) {
+      // this.data = res.data.map((item) => ({ ...item, value: item.descript }));
+      this.data = [
         [0, 0, 5],
         [0, 1, 1],
         [0, 2, 0],
@@ -175,14 +182,8 @@ export default {
         [6, 21, 2],
         [6, 22, 2],
         [6, 23, 6],
-      ],
-    };
-  },
-  async created() {
-    // let res = await this.$api.getPie(1);
-    // if (res.data) {
-    //   this.data = res.data.map((item) => ({ ...item, value: item.descript }));
-    // }
+      ];
+    }
   },
   methods: {
     getOptions(data) {
@@ -256,7 +257,7 @@ export default {
           boxWidth: 200,
           boxDepth: 80,
           viewControl: {
-            // projection: 'orthographic'
+            projection: "orthographic",
           },
           light: {
             main: {
@@ -271,11 +272,6 @@ export default {
         series: [
           {
             type: "bar3D",
-            data: data.map(function (item) {
-              return {
-                value: [item[1], item[0], item[2]],
-              };
-            }),
             shading: "lambert",
             label: {
               fontSize: 16,
@@ -290,6 +286,11 @@ export default {
                 color: "#900",
               },
             },
+            data: data.map(function (item) {
+              return {
+                value: [item[1], item[0], item[2]],
+              };
+            }),
           },
         ],
       };

@@ -1,5 +1,5 @@
 <template>
-  <WebPie3d :config="getOptions" :data="data"></WebPie3d>
+  <WebGl3d :config="getOptions" :data="data"></WebGl3d>
 </template>
 
 <script>

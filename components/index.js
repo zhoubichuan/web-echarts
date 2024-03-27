@@ -15,6 +15,7 @@ import line from "./line";
 import pie from "./pie";
 import pieConfig from "./pieConfig";
 import pie3d from "./pie3d";
+import gl3d from "./gl3d";
 import scatter from "./scatter";
 import tree from "./tree";
 import polar from './polar'
@@ -39,6 +40,7 @@ let components = {
   pie,
   pieConfig,
   pie3d,
+  gl3d,
   scatter,
   tree,
   polar,
