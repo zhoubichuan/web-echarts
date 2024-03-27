@@ -54,7 +54,7 @@ export default {
     },
     handleScroll() {
       let judge =
-        window.innerHeight + window.scrollY > this.$refs.code.offsetTop + 100;
+        window.innerHeight + window.scrollY > this.$refs.code?.offsetTop + 100;
       if (judge) {
         this.show = true;
         window.removeEventListener("scroll", this.handleScroll);

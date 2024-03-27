@@ -26,7 +26,6 @@ module.exports = {
     "demo": path.resolve(__dirname, "../../demo/"),
     "mock": path.resolve(__dirname, "./public/mock/"),
     "@": path.resolve(__dirname, "../../src/"),
-    "@zrender": path.resolve(__dirname, "../../src/zrender/"),
   },
   postcss: {
     plugins: [require("autoprefixer")],
