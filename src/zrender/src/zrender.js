@@ -169,7 +169,7 @@ var ZRender = function (id, dom, opts) {
     };
 };
 // #endregion snippet2
-// #endregion snippet3
+// #region snippet3
 ZRender.prototype = {
 
     constructor: ZRender,
