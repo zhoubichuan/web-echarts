@@ -1,7 +1,7 @@
 /**
  * Do not mount those modules on 'src/zrender' for better tree shaking.
  */
-
+// #region snippet1
 import * as zrUtil from './core/util';
 import * as matrix from './core/matrix';
 import * as vector from './core/vector';
@@ -46,3 +46,4 @@ export {pathTool as path};
 export {zrUtil as util};
 
 export {parseSVG};
+// #endregion snippet1

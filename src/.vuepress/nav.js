@@ -46,11 +46,11 @@ const nav = [
       text: "zrender",
       items: [
         {
-          text: "一.Vue/cli2.x",
+          text: "一.zrender案例",
           link: "/source/vue-cli2.x/1.index",
         },
         {
-          text: "二.Vue 2.x",
+          text: "二.zrender",
           link: "/source/vue2.x/1.index",
         },
         {
@@ -64,18 +64,18 @@ const nav = [
       ],
     },
     {
-      text: "Echarts高级",
+      text: "Echarts源码",
       items: [
         {
           text: "一.Vue/cli3.x",
           link: "/source/vue-cli3.x/1.index",
         },
         {
-          text: "二.Vue 3.x",
+          text: "二.echarts",
           link: "/source/vue3.x/1.index",
         },
         {
-          text: "三.Vue-Router4.x",
+          text: "三.echarts-gl",
           link: "/source/vue-router4.x/1.index",
         },
         {

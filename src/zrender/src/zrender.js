@@ -40,12 +40,13 @@ export var version = '4.3.2';
  * @param {number|string} [opts.height] Can be 'auto' (the same as null/undefined)
  * @return {module:zrender/ZRender}
  */
+// #region snippet1
 export function init(dom, opts) {
     var zr = new ZRender(guid(), dom, opts);
     instances[zr.id] = zr;
     return zr;
 }
-
+// #endregion snippet1
 /**
  * Dispose zrender instance
  * @param {module:zrender/ZRender} zr
@@ -97,6 +98,7 @@ function delInstance(id) {
  * @param {number} [opts.width] Can be 'auto' (the same as null/undefined)
  * @param {number} [opts.height] Can be 'auto' (the same as null/undefined)
  */
+// #region snippet2
 var ZRender = function (id, dom, opts) {
 
     opts = opts || {};
@@ -166,7 +168,8 @@ var ZRender = function (id, dom, opts) {
         el.addSelfToZr(self);
     };
 };
-
+// #endregion snippet2
+// #endregion snippet3
 ZRender.prototype = {
 
     constructor: ZRender,
@@ -450,4 +453,4 @@ ZRender.prototype = {
         delInstance(this.id);
     }
 };
-
+// #endregion snippet3
