@@ -20,7 +20,7 @@
 /**
  * Do not mount those modules on 'src/echarts' for better tree shaking.
  */
-
+// #region snippet1
 import * as zrender from 'zrender/src/zrender';
 import * as matrix from 'zrender/src/core/matrix';
 import * as vector from 'zrender/src/core/vector';
@@ -95,3 +95,4 @@ zrUtil.each(
     }
 );
 export {graphic};
+// #endregion snippet1

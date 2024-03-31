@@ -128,6 +128,7 @@ zrUtil.mixin(MessageCenter, Eventful);
 /**
  * @module echarts~ECharts
  */
+// #region snippet3
 function ECharts(dom, theme, opts) {
     opts = opts || {};
 
@@ -258,7 +259,8 @@ function ECharts(dom, theme, opts) {
     // ECharts instance can be used as value.
     zrUtil.setAsPrimitive(this);
 }
-
+// #endregion snippet3
+// #region snippet4
 var echartsProto = ECharts.prototype;
 
 echartsProto._onframe = function () {
@@ -354,6 +356,7 @@ echartsProto.getZr = function () {
  * @param {boolean} [opts.notMerge=false]
  * @param {boolean} [opts.lazyUpdate=false] Useful when setOption frequently.
  */
+// #region snippet2
 echartsProto.setOption = function (option, notMerge, lazyUpdate) {
     if (__DEV__) {
         assert(!this[IN_MAIN_PROCESS], '`setOption` should not be called during main process.');
@@ -402,7 +405,7 @@ echartsProto.setOption = function (option, notMerge, lazyUpdate) {
         triggerUpdatedEvent.call(this, silent);
     }
 };
-
+// #region snippet2
 /**
  * @DEPRECATED
  */
@@ -834,7 +837,7 @@ echartsProto.getViewOfComponentModel = function (componentModel) {
 echartsProto.getViewOfSeriesModel = function (seriesModel) {
     return this._chartsMap[seriesModel.__viewId];
 };
-
+// #region snippet5
 var updateMethods = {
 
     prepareAndUpdate: function (payload) {
@@ -1041,7 +1044,7 @@ var updateMethods = {
         // performPostUpdateFuncs(ecModel, this._api);
     }
 };
-
+// #endregion snippet5
 function prepare(ecIns) {
     var ecModel = ecIns._model;
     var scheduler = ecIns._scheduler;
@@ -1524,7 +1527,7 @@ function clearColorPalette(ecModel) {
         seriesModel.clearColorPalette();
     });
 }
-
+// #region snippet6
 function render(ecIns, ecModel, api, payload) {
 
     renderComponents(ecIns, ecModel, api, payload);
@@ -1542,7 +1545,8 @@ function render(ecIns, ecModel, api, payload) {
         }
     });
 }
-
+// #endregion snippet6
+// #region snippet7
 function renderComponents(ecIns, ecModel, api, payload, dirtyList) {
     each(dirtyList || ecIns._componentsViews, function (componentView) {
         var componentModel = componentView.__model;
@@ -1551,11 +1555,12 @@ function renderComponents(ecIns, ecModel, api, payload, dirtyList) {
         updateZ(componentModel, componentView);
     });
 }
-
+// #endregion snippet7
 /**
  * Render each chart and component
  * @private
  */
+// #region snippet8
 function renderSeries(ecIns, ecModel, api, payload, dirtyMap) {
     // Render all charts
     var scheduler = ecIns._scheduler;
@@ -1587,7 +1592,7 @@ function renderSeries(ecIns, ecModel, api, payload, dirtyMap) {
     // Add aria
     aria(ecIns._zr.dom, ecModel);
 }
-
+// #endregion snippet8
 function performPostUpdateFuncs(ecModel, api) {
     each(postUpdateFuncs, function (func) {
         func(ecModel, api);
@@ -1736,7 +1741,7 @@ echartsProto.dispose = function () {
 
     delete instances[this.id];
 };
-
+// #endregion snippet4
 zrUtil.mixin(ECharts, Eventful);
 
 function disposedWarning(id) {
@@ -2060,6 +2065,7 @@ function enableConnect(chart) {
  * @param {number} [opts.height] Use clientHeight of the input `dom` by default.
  *                               Can be 'auto' (the same as null/undefined)
  */
+// #region snippet1
 export function init(dom, theme, opts) {
     if (__DEV__) {
         // Check version
@@ -2110,7 +2116,7 @@ export function init(dom, theme, opts) {
 
     return chart;
 }
-
+// #endregion snippet1
 /**
  * @return {string|Array.<module:echarts~ECharts>} groupId
  */
