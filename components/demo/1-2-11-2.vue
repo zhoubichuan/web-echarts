@@ -1,8 +1,8 @@
 <template>
   <div class="candlestick">
     <div class="handle">
-      <el-select class="select" v-model="value" @change="change">
-        <el-options>000001</el-options>
+      <el-select filterable class="select" v-model="value" @change="change">
+        <el-option v-for="item in options" :key="item.dm" :label="item.mc" :value="item.dm.split('.')[0]"></el-option>
       </el-select>
       <el-button>确定</el-button>
     </div>
@@ -16,12 +16,18 @@ export default {
     return {
       value: "000001",
       data: [],
+      options: [],
     };
   },
   async created() {
     this.change(this.value)
+    this.getSelection()
   },
   methods: {
+    async getSelection() {
+      const data = await this.$axios.get('https://api.mairuiapi.com/hslt/list/LICENCE-66D8-9F96-0C7F0FBCD073')
+      this.options = data
+    },
     async change(code) {
       const data = await this.$axios.get('https://api.mairui.club/hszbl/fsjy/' + code + '/dn/b997d4403688d5e66a');
       this.data = data.slice(-180)
